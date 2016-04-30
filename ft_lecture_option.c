@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 17:02:59 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/04/30 14:56:06 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/04/30 16:53:30 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ int		*ft_lecture_option(char ***argv)
 
 	i = 0;
 	option = (int*)malloc(sizeof(int) * 5);
-	while (*argv[i] != NULL && *argv[i][0] == '-')
+	option = ft_bzero(option, 20);
+	while ((*argv)[i]  && (*argv)[i][0] == '-')
 	{
 		option = ft_detection_option(*argv[i], option);
 		i++;
 	}
-	*argv = *argv + i;
+	*argv = *argv + (i);
 	return (option);
 }

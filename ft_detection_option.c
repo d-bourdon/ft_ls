@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 17:30:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/04/30 14:50:16 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/04/30 16:53:57 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		*ft_detection_option(char *str, int *option)
 	int		i;
 
 	i = 1;
-	while (str[i] != '\0')
+	while (str[i] && str[i] != '\0')
 	{
 		if (str[i] == 'l')
 			option[0] = 1;
