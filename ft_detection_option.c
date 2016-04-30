@@ -6,11 +6,11 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 17:30:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/04/29 17:51:36 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/04/30 14:50:16 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ld.h"
+#include "ft_ls.h"
 
 int		*ft_detection_option(char *str, int *option)
 {
@@ -30,7 +30,7 @@ int		*ft_detection_option(char *str, int *option)
 		else if (str[i] == 't')
 			option[4] = 1;
 		else
-			ft_erreur(str[i], 1);
+			ft_erreur(&(str[i]), 1);
 		i++;
 	}
 	return (option);

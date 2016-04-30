@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/30 13:45:15 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/04/30 13:59:03 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/04/30 14:55:47 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_erreur(char *str, int mode)
 {
-	if (mode = 1)
+	if (mode == 1)
 	{
-		ft_putchar("ls: option invalide --");
-		write(1,str[0], 1);
-		ft_putchar("\n utilisation: ls [-laRrt] [fichier ...]");
+		ft_putstr("ls: option invalide --");
+		ft_putchar(str[0]);
+		ft_putstr("\n utilisation: ls [-laRrt] [fichier ...]");
 		exit(0);
 	}
 }
