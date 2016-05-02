@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 17:02:59 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/04/30 16:53:30 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/02 10:40:15 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int		*ft_lecture_option(char ***argv)
 	option = ft_bzero(option, 20);
 	while ((*argv)[i]  && (*argv)[i][0] == '-')
 	{
-		option = ft_detection_option(*argv[i], option);
+	//	printf("%s\n", (*argv)[i]);
+		option = ft_detection_option((*argv)[i], option);
 		i++;
 	}
 	*argv = *argv + (i);
