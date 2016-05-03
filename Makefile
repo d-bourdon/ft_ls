@@ -6,7 +6,7 @@
 #    By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/30 15:44:04 by dbourdon          #+#    #+#              #
-#    Updated: 2016/04/30 15:48:51 by dbourdon         ###   ########.fr        #
+#    Updated: 2016/05/02 16:37:41 by dbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = ft_ls
 SRC = main.c\
 	  ft_erreur.c\
 	  ft_lecture_option.c\
-	  ft_detection_option.c
+	  ft_detection_option.c\
+	  ft_path.c
 
 OBJ = $(SRC:.c=.o)
 

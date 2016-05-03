@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/03 14:53:25 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/03 16:48:30 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct				s_simple_listing
 {
 	char					*nom;
 	int						type;
-	struct s_simple_listing	*next;
+	int						type_s;
+	struct s_simple_listing	*nexit;
 }							t_sliste;
 
 typedef struct				s_compl_listing
@@ -37,6 +38,7 @@ typedef struct				s_compl_listing
 	char					*groupe_u;
 	int						taille;
 	char					*date_heure;
+	int						type_s;
 	struct s_compl_listing	*next;
 }							t_cliste;
 
