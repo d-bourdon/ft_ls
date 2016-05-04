@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/03 16:48:30 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/04 16:19:41 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-typedef struct				s_simple_listing
-{
-	char					*nom;
-	int						type;
-	int						type_s;
-	struct s_simple_listing	*nexit;
-}							t_sliste;
-
-typedef struct				s_compl_listing
+typedef struct				s_liste
 {
 	char					*nom;
 	int						type;
@@ -38,13 +30,15 @@ typedef struct				s_compl_listing
 	char					*groupe_u;
 	int						taille;
 	char					*date_heure;
-	int						type_s;
 	struct s_compl_listing	*next;
-}							t_cliste;
+}							t_liste;
 
 void						ft_erreur(char *str, int mode);
 int							*ft_detection_option(char *str, int *option);
 int							*ft_lecture_option(char ***argv);
 char						*ft_path(char *src, char *fichier);
+void						ft_lstaddend(t_liste **liste, t_liste *ajout);
+void						ft_ajout_liste_dossier(t_liste *lst_f, char *argument);
+t_liste						*ft_ajout_liste(struct dirent lreaddir, struct stat llstat, int *option);
 
 #endif

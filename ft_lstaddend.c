@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_erreur.c                                        :+:      :+:    :+:   */
+/*   ft_lstaddend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/30 13:45:15 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/04 16:24:36 by dbourdon         ###   ########.fr       */
+/*   Created: 2016/05/04 11:01:22 by dbourdon          #+#    #+#             */
+/*   Updated: 2016/05/04 11:06:30 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
-
-void	ft_erreur(char *str, int mode)
-{
-	if (mode == 1)
-	{
-		ft_putstr("ls: option invalide --");
-		ft_putchar(str[0]);
-		ft_putstr("\nutilisation: ls [-laRrt] [dossier ...]\n");
-		exit(0);
-	}
-	else if (mode == 2)
-	{
-		ft_putstr("ls: ");
-		ft_putstr(str);
-		ft_putstr(": Aucun fichier ou dossier porte ce nom\n");
-	}
-}
+ #include "ft_ls.h"
+ 
+ void	ft_lstaddend(t_liste **liste, t_liste *ajout)
+ {
+ 	t_liste	*tmp;
+ 
+ 	tmp = *liste;
+ 	while (tmp->next != NULL)
+ 		tmp = tmp->next;
+ 	tmp->next = ajout;
+ }
