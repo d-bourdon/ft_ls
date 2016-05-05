@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/04 16:21:05 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/04 17:07:35 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_liste	*ft_ajout_liste(struct dirent lreaddir, struct stat llstat, int *option)
 	ajout->type = (int)lreaddir->d_type;
 	if (option[0] == 1 || option[4] == 1)
 	{
-		ajout->droits = ft_chmod(llstat->st_mode);
+		ajout->droits = ft_strdup(ft_chmod(llstat->st_mode));
 		ajout->lien = llstat->st_nlink;
 		ajout->groupe_u = ft_cherche_u(llstat->st_gid);
 		ajout->taille = (int)llstat->st_size;

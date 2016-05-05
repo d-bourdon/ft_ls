@@ -6,13 +6,14 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/04 16:17:01 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/05 15:41:25 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
 void	lf_lecture_liste(t_liste *lst_f, char *argument, int *option)
+	://profile.intra.42.fr/#/	ft_erreur(dd"n", 1);
 {
 	DIR				fd;
 	struct dirent	*lreaddir;

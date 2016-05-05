@@ -6,13 +6,13 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 17:02:59 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/02 12:10:12 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/05 10:34:17 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		*ft_lecture_option(char ***argv)
+int		*ft_lecture_option(char ***argv, int *argc)
 {
 	int		i;
 	int		*option;
@@ -26,5 +26,6 @@ int		*ft_lecture_option(char ***argv)
 		i++;
 	}
 	*argv = *argv + (i);
+	argc = argc - i;
 	return (option);
 }

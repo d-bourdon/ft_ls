@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/04 16:19:41 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/05 10:34:14 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct				s_liste
 
 void						ft_erreur(char *str, int mode);
 int							*ft_detection_option(char *str, int *option);
-int							*ft_lecture_option(char ***argv);
+int							*ft_lecture_option(char ***argv, int *argc);
 char						*ft_path(char *src, char *fichier);
 void						ft_lstaddend(t_liste **liste, t_liste *ajout);
 void						ft_ajout_liste_dossier(t_liste *lst_f, char *argument);
