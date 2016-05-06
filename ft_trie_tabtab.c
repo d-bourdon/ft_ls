@@ -19,40 +19,30 @@ char	**ft_trie_tabtab(char **atrier, int	taille)
 	int		i;
 	int		j;
 	
-	i = 0;
+	i = -1;
 	j = 0;
 	trier = (char	**)malloc(sizeof(char*) * taille);
-	tmp = ft_strdup(argv[0]);
-	while (i < taille)
+	while (++i < taille)
+		trier[i] = ft_strdup(atrier[i]);
+	i = 0; 
+	while (j == 0)
 	{
-		while (i < taille)
+		j = 1;
+		while (i < (taille - 1))
 		{
-			if((ft_strcmp(tmp, atrier[i])) < 0)
+			if (ft_strcmp(trier[i], trier[i + 1]) > 0)
 			{
+				tmp = ft_strdup(trier[i]);
+				free(trier[i]);
+				trier[i] = ft_strdup(trier[i + 1]);
+				free(trier[i + 1]);
+				trier[i + 1] = ft_strdup(tmp);
 				free(tmp);
-				tmp = strdup(atrier[i]);
-				i = -1;
+				j = 0;
 			}
 			i++;
 		}
-		trier[j] = ft_strdup(tmp);
-		j++;
+		i = 0;
 	}
-}
-int	main(void)
-{
-	char **str;
-	char **out;
-	int i;
-
-	i = 0;
-	str = (char **)malloc(sizeof(char*) * 4);
-	str[0] = ft_strdup("tien");
-	str[1] = ft_strdup("prend");
-	str[2] = ft_strdup("ca_dans");
-	str[3] = ft_strdup("ta_gueule");
-	out = ft_trie_tabtab(str);
-	while (out[i] != NULL)
-		printf("%s\n", out[i++]);fflush(stdout);
-	return(0);
+	return (trier);
 }
