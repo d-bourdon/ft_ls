@@ -13,7 +13,6 @@
 #include "ft_ls.h"
 
 void	lf_lecture_liste(t_liste *lst_f, char *argument, int *option)
-	://profile.intra.42.fr/#/	ft_erreur(dd"n", 1);
 {
 	DIR				fd;
 	struct dirent	*lreaddir;
