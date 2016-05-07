@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_list.c                                        :+:      :+:    :+:   */
+/*   trie_liste.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/05 13:32:27 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/07 12:05:54 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "ft_ls.h"
 
-t_list *sort_list(t_list *lst, int (*cmp)(int, int))
+int		ft_cmp(int a, int b, int option)
+{
+	if(option == 1)
+	{
+		if (a < b)
+			return (-1);
+		else
+			return (1);
+	}
+	if (a > b)
+		return (-1);
+	else
+		return (1);
+}
+
+t_liste *ft_trie_liste(t_liste *lst, int option, int (*cmp)(int, int, int))
 {
 	t_list	*tmpa, *tmpb, *tmpc;
 	int		is_sorted;
@@ -23,7 +38,7 @@ t_list *sort_list(t_list *lst, int (*cmp)(int, int))
 	while (!is_sorted)
 	{
 		is_sorted = 1;
-		while (lst && lst->next && !cmp(lst->data, lst->next->data))
+		while (lst && lst->next && !cmp(lst->data, lst->next->data, option))
 		{
 			tmpa = lst->next;
 			lst->next = lst->next->next;

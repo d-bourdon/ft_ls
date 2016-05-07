@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/05 15:41:25 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/07 12:05:50 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ void	lf_lecture_liste(t_liste *lst_f, char *argument, int *option)
 	DIR				fd;
 	struct dirent	*lreaddir;
 	struct stat		*llstat;
+	t_liste			*tmplst;
 	
 	fd = opendir(argument);
 	if (fd == NULL)
 		ft_erreur(argument, 2);
 	ft_ajout_liste_dossier(lst_f, argument);
+	tmplst = ft_pointe_fin_lst(lst_f);
 	llstat = (struct stat*)malloc(sizeof(struct stat));
 	while((lreaddir = readdir(&fd)) != NULL)
 	{
@@ -29,4 +31,5 @@ void	lf_lecture_liste(t_liste *lst_f, char *argument, int *option)
 			lstat(ft_path(argument, lreaddir->d_name, llstat));
 		ft_lstaddend(lst_f, ajout_liste(lreaddir, llstat, option));
 	}
+	ft_trie_liste(tmplst, option[4], &(ft_cmp));
 }

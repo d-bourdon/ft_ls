@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_pointe_fin_lst.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/29 16:45:27 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/07 12:05:57 by dbourdon         ###   ########.fr       */
+/*   Created: 2016/05/07 11:29:12 by dbourdon          #+#    #+#             */
+/*   Updated: 2016/05/07 11:36:50 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
-
-int		main(int argc, char **argv)
+t_liste	ft_pointe_fin_lst(t_liste liste)
 {
-	int		*option;
-	int		i;
-	t_liste	*lst_f;
-	char	**liste_arg;
+	t_liste		tmp;
 
-	argv++;
-	i = 0;
-	argc = 1;
-	option = ft_lecture_option(&(argv), &(argc));
-	liste_arg = ft_trie_tabtab(argv, argc);
-	while (liste_arg[i])
-		ft_lecture_liste(lst_f, argv[i++], option);
-	chmod = kstat->st_mode & (S_IRWXU | S_IRWXG | S_IRWXO);
-	return (0);
+	tmp = liste;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	return(tmp);
 }
