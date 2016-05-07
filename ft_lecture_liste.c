@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/07 12:05:50 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/07 14:00:36 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,17 @@ void	lf_lecture_liste(t_liste *lst_f, char *argument, int *option)
 			lstat(ft_path(argument, lreaddir->d_name, llstat));
 		ft_lstaddend(lst_f, ajout_liste(lreaddir, llstat, option));
 	}
-	ft_trie_liste(tmplst, option[4], &(ft_cmp));
+	if (option[4] == 1)
+		ft_trie_liste_temp(tmplst, option[4], &(ft_cmp));
+	else
+		ft_trie_liste(tmplst, option[4], &(ft_cmp));
+	if(option[2] == 1)
+	{
+		while(tmplst->next != NULL)
+		{
+			if (tmplst->type = 1 && (tmplst->name != "." || tmplst->name != ".."))
+				ft_lecture_liste(lst_f, ft_path(argument, tmplst->name), option);
+			tmplst = tmplst->next;
+		}
+	}
 }

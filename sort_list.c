@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/07 12:05:54 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/07 14:00:50 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_liste *ft_trie_liste(t_liste *lst, int option, int (*cmp)(int, int, int))
 	while (!is_sorted)
 	{
 		is_sorted = 1;
-		while (lst && lst->next && !cmp(lst->data, lst->next->data, option))
+		while (lst && lst->next && !cmp(lst->nom, lst->next->nom, option))
 		{
 			tmpa = lst->next;
 			lst->next = lst->next->next;
@@ -51,7 +51,7 @@ t_liste *ft_trie_liste(t_liste *lst, int option, int (*cmp)(int, int, int))
 		{
 			tmpb = tmpa->next;
 			tmpc = tmpb->next;
-			if (tmpc && !cmp(tmpb->data, tmpc->data))
+			if (tmpc && !cmp(tmpb->nom, tmpc->nom))
 			{
 				is_sorted = 0;
 				tmpa->next = tmpc;
