@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/04 17:07:35 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/07 15:29:03 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ t_liste	*ft_ajout_liste(struct dirent lreaddir, struct stat llstat, int *option)
 	{
 		ajout->droits = ft_strdup(ft_chmod(llstat->st_mode));
 		ajout->lien = llstat->st_nlink;
-		ajout->groupe_u = ft_cherche_u(llstat->st_gid);
+		ajout->groupe_u = ft_strdup(ft_cherche_u(llstat->st_gid));
 		ajout->taille = (int)llstat->st_size;
-		ajout->date_heure = ft_heure_unix(llstats->st_mtime);
+		ajout->date_heure = ft_strdup(ctime(llstats->st_mtime));
 	}
 	return (ajout);
 }

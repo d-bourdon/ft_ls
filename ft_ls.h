@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/05 10:34:14 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/07 15:29:32 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <dirent.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <grp.h>
+# include <time.h>
 
 typedef struct				s_liste
 {

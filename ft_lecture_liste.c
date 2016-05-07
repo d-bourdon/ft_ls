@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/07 14:00:36 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/07 14:56:25 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	lf_lecture_liste(t_liste *lst_f, char *argument, int *option)
 	{
 		if (option[0] == 1 || option[4] == 1)
 			lstat(ft_path(argument, lreaddir->d_name, llstat));
+		if (lreaddir->name[0] != '.' )
 		ft_lstaddend(lst_f, ajout_liste(lreaddir, llstat, option));
 	}
 	if (option[4] == 1)
