@@ -6,11 +6,11 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 16:34:03 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/05 11:22:37 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/08 15:10:27 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_ls.h"
 
 char	*ft_chmod(mode_t mode)
 {

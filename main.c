@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:45:27 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/07 16:21:53 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/08 15:02:59 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		main(int argc, char **argv)
 {
 	int		*option;
 	int		i;
-	t_liste	*lst_f;
+	t_liste	*lst_f = NULL;
 	char	**liste_arg;
 
 	argv++;

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/08 14:13:17 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/08 15:25:56 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 {
 	int		i;
 
+	if (option[0] == argc)
+		exit(0);
 	i = 0;
 
-	while (lst_f->NEXT != NULL)
+	while (lst_f->next != NULL)
 	{
 		while(i < 2 && lst_f->next != NULL)
 		{
-			ft_putstr(lst_f->name);
+			ft_putstr(lst_f->nom);
 			ft_putstr("    ");
 			i++;
 			lst_f = lst_f->next;
