@@ -19,5 +19,5 @@ t_liste	*ft_pointe_fin_lst(t_liste *liste)
 	tmp = liste;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
-	return(tmp);
+	return(*(&tmp));
 }

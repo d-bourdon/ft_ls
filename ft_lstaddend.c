@@ -17,7 +17,12 @@
  	t_liste	*tmp;
  
  	tmp = *liste;
- 	while (tmp->next != NULL)
- 		tmp = tmp->next;
- 	tmp->next = ajout;
- }
+ 	if (tmp == NULL)
+ 		tmp = ajout;
+ 	else
+ 	{
+ 		while (tmp->next != NULL)
+ 			tmp = tmp->next;
+ 		tmp->next = ajout;
+	}
+}

@@ -22,11 +22,15 @@ void	ft_lecture_liste(t_liste *lst_f, char *argument, int *option)
 	fd = opendir(argument);
 	if (fd == NULL)
 		ft_erreur(argument, 2);
+	printf("On entre\n"); fflush(stdout);
 	ft_ajout_liste_dossier(lst_f, argument);
+	printf("On a ajoute le dossier base\n"); fflush(stdout);
 	tmplst = ft_pointe_fin_lst(lst_f);
+	printf("On lastpointe\n"); fflush(stdout);
 	llstat = (struct stat*)malloc(sizeof(struct stat));
 	while((lreaddir = readdir(fd)) != NULL)
 	{
+		printf("On boucle sur readdir\n"); fflush(stdout);
 		if (option[0] == 1 || option[4] == 1)
 			lstat(ft_path(argument, lreaddir->d_name), llstat);
 		if (lreaddir->d_name[0] != '.' )

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:06 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/07 14:51:46 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/08 15:54:49 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ char	**ft_trie_tabtab(char **atrier, int	taille)
 	char	*tmp;
 	int		i;
 	int		j;
-	
+
 	i = -1;
 	j = 0;
-	if (taille == 0)
+	if (taille == 1)
 	{
-		trier = (char**)malloc(sizeof(char*));
-		trier[0] = strdup("./");
+		printf("	on est in"); fflush(stdout);
+		trier = (char**)malloc(sizeof(char*) * 1);
+		trier[0] = ft_strdup(".");
 		return (trier);
 	}
+	printf("On start\n"); fflush(stdout);
 	trier = (char	**)malloc(sizeof(char*) * taille);
 	while (++i < taille)
 		trier[i] = ft_strdup(atrier[i]);

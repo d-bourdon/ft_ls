@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/30 13:45:15 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/04 16:38:10 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/08 15:52:34 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	ft_erreur(char *str, int mode)
 		ft_putstr("ls: ");
 		ft_putstr(str);
 		ft_putstr(": Aucun fichier ou dossier porte ce nom\n");
+		exit(0);
 	}
 }

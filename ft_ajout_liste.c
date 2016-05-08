@@ -16,12 +16,16 @@ void	ft_ajout_liste_dossier(t_liste *lst_f, char *argument)
 {
 	t_liste		*ajout;
 
+	printf("Welcom to ft_ajout_liste_dossier\n"); fflush(stdout);
 	ajout = (t_liste*)malloc(sizeof(t_liste));
 	ajout->nom = (char*)malloc(sizeof(char) * ft_strlen(argument));
 	ft_strcpy(ajout->nom, argument);
+	printf("On strcopy\n"); fflush(stdout);
 	ajout->type = 99;
 	ajout->next = NULL;
+	printf("On set\n"); fflush(stdout);
 	ft_lstaddend(&lst_f, ajout);
+	printf("On addend\n"); fflush(stdout);
 }
 
 t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *option)
