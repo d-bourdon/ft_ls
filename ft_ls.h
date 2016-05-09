@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/08 15:40:33 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 12:03:00 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void						ft_lstaddend(t_liste **liste, t_liste *ajout);
 void						ft_ajout_liste_dossier(t_liste *lst_f, char *argument);
 t_liste						*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *option);
 void						ft_affichage_normal(t_liste *lst_f, int *option, int argc);
-void						ft_affichage(t_liste *lst_f, int *option, int argc);
+void						ft_affichage(t_liste **lst_f, int *option, int argc);
 char						*ft_cherche_u(gid_t gid);
 char						*ft_chmod(mode_t mode);
 void						ft_lecture_liste(t_liste *lst_f, char *argument, int *option);
-t_liste						*ft_pointe_fin_lst(t_liste *liste);
+t_liste						*ft_pointe_fin_lst(t_liste **liste);
 int							ft_cmp(int a, int b, int option);
 t_liste						*ft_trie_liste(t_liste *lst, int option, int (*cmp)(int, int, int));
 t_liste						*ft_trie_liste_temp(t_liste *lst, int option, int (*cmp)(int, int, int));

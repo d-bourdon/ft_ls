@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/08 15:25:56 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 12:06:19 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,39 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 {
 	int		i;
 
-	if (option[0] == argc)
-		exit(0);
-	i = 0;
-
-	while (lst_f->next != NULL)
+	if (option[0] == (argc + 100))
 	{
-		while(i < 2 && lst_f->next != NULL)
+		printf("On exit pour use argc\n"); fflush(stdout);
+		exit(0);
+	}
+	i = 0;
+//	printf("la liste = %s\n", lst_f->nom);fflush(stdout);
+	while (lst_f && lst_f->next != NULL)
+	{
+		printf("Une  nouvelle ligne\n");fflush(stdout);
+		while(i < 2 && lst_f && lst_f->next != NULL)
 		{
 			ft_putstr(lst_f->nom);
 			ft_putstr("    ");
 			i++;
 			lst_f = lst_f->next;
 		}
+		printf("\nnext");fflush(stdout);
 		ft_putchar('\n');
 		i = 0;
 	}
 }
 
-void	ft_affichage(t_liste *lst_f, int *option, int argc)
+void	ft_affichage(t_liste **lst_f, int *option, int argc)
 {
 	if (option[0] != 1)
-		ft_affichage_normal(lst_f, option, argc);
-	else
 	{
-		while (lst_f->next != NULL)
+		ft_affichage_normal(*lst_f, option, argc);
+		printf("On affiche normalememt\n");fflush(stdout);
+	}
+		else
+	{
+		while (lst_f && lst_f->next != NULL)
 		{
 			ft_putnbr(lst_f->type);
 			ft_putchar(' ');

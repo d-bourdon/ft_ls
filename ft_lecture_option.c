@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 17:02:59 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/05 10:34:17 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 12:00:01 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		*ft_lecture_option(char ***argv, int *argc)
 		i++;
 	}
 	*argv = *argv + (i);
-	argc = argc - i;
+	*argc = *argc - i;
 	return (option);
 }

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/08 15:15:32 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 11:42:23 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lecture_liste(t_liste *lst_f, char *argument, int *option)
 	DIR				*fd;
 	struct dirent	*lreaddir;
 	struct stat		*llstat;
-	t_liste			*tmplst;
+	t_liste			*tmplst = NULL;
 	
 	fd = opendir(argument);
 	if (fd == NULL)
@@ -25,7 +25,7 @@ void	ft_lecture_liste(t_liste *lst_f, char *argument, int *option)
 	printf("On entre\n"); fflush(stdout);
 	ft_ajout_liste_dossier(lst_f, argument);
 	printf("On a ajoute le dossier base\n"); fflush(stdout);
-	tmplst = ft_pointe_fin_lst(lst_f);
+	tmplst = ft_pointe_fin_lst(&(lst_f));
 	printf("On lastpointe\n"); fflush(stdout);
 	llstat = (struct stat*)malloc(sizeof(struct stat));
 	while((lreaddir = readdir(fd)) != NULL)
@@ -36,11 +36,18 @@ void	ft_lecture_liste(t_liste *lst_f, char *argument, int *option)
 		if (lreaddir->d_name[0] != '.' )
 		ft_lstaddend(&(lst_f), ft_ajout_liste(lreaddir, llstat, option));
 	}
+	printf("Hop on sort de la boucle\n");fflush(stdout);
 	if (option[4] == 1)
+	{
 		ft_trie_liste_temp(tmplst, option[4], &(ft_cmp));
+		printf("On trie la liste qu nivequ du temps\n"); fflush(stdout);
+	}
 	else
+	{
 		ft_trie_liste(tmplst, option[4], &(ft_cmp));
-	if(option[2] == 1)
+		printf("On trie les entree par leur nom\n");fflush(stdout);
+	}
+		if(option[2] == 1)
 	{
 		while(tmplst->next != NULL)
 		{
@@ -49,4 +56,5 @@ void	ft_lecture_liste(t_liste *lst_f, char *argument, int *option)
 			tmplst = tmplst->next;
 		}
 	}
+	printf("On a fini la lecture sur %s\n", argument);fflush(stdout);
 }
