@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 17:24:06 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 18:31:24 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/stat.h>
 # include <grp.h>
 # include <time.h>
+# include <sys/ioctl.h>
 
 typedef struct				s_liste
 {
