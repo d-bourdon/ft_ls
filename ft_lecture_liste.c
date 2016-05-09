@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 11:42:23 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 14:05:32 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_lecture_liste(t_liste *lst_f, char *argument, int *option)
 	
 	fd = opendir(argument);
 	if (fd == NULL)
-		ft_erreur(argument, 2);
+		return (ft_erreur(argument, 2));
 	printf("On entre\n"); fflush(stdout);
 	ft_ajout_liste_dossier(lst_f, argument);
 	printf("On a ajoute le dossier base\n"); fflush(stdout);

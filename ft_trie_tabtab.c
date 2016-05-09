@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:06 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 11:56:54 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 14:03:12 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,25 @@ char	**ft_trie_tabtab(char **atrier, int	taille)
 		trier[0] = ft_strdup(".");
 		return (trier);
 	}
-	printf("On start trie\n"); fflush(stdout);
-	trier = (char**)malloc(sizeof(char*) * taille);
-	while (++i < taille)
-		trier[i] = ft_strdup(atrier[i]);
-	i = 0;
-	while (j == 0)
+	printf("On start trie taille =%d\n", taille); fflush(stdout);
+	trier = (char**)malloc(sizeof(char*) * (taille + 1));
+	while (atrier[++i])
 	{
+		trier[i] = ft_strdup(atrier[i]);
+		printf("copie de atrier dans trier i =%d et trier[i] = %s\n", i, trier[i]);fflush(stdout);
+	}
+	printf("on sort de la copie\n");fflush(stdout);
+	i = 0;
+	while (j == 0 )
+	{
+		printf("tant que j==0\n"); fflush(stdout);
 		j = 1;
-		while (i < (taille - 1))
+		while (i < (taille - 2))
 		{
+			printf("while trier i++ -> %d - %s\n", i, trier[i + 1]); fflush(stdout);
 			if (ft_strcmp(trier[i], trier[i + 1]) > 0)
 			{
+				printf("start switch -");fflush(stdout);
 				tmp = ft_strdup(trier[i]);
 				free(trier[i]);
 				trier[i] = ft_strdup(trier[i + 1]);
@@ -47,6 +54,7 @@ char	**ft_trie_tabtab(char **atrier, int	taille)
 				trier[i + 1] = ft_strdup(tmp);
 				free(tmp);
 				j = 0;
+				printf("fin switch\n");fflush(stdout);
 			}
 			i++;
 		}

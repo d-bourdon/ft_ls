@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:45:27 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 12:06:41 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 14:07:47 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int		main(int argc, char **argv)
 	printf("On as lu\n"); fflush(stdout);
 	liste_arg = ft_trie_tabtab(argv, argc);
 	printf("On as trier\n"); fflush(stdout);
-	while (i < argc && liste_arg[i])
+	while (i < (argc - 1) && liste_arg[i] != NULL)
 	{
 		printf("On boucle %s\n", liste_arg[i]); fflush(stdout);
 		ft_lecture_liste(lst_f, liste_arg[i++], option);
 	}
 	printf("\n\nOn as fini de boucler\n"); fflush(stdout);
-	ft_affichage(&lst_f, option, argc);
+	ft_affichage(lst_f, option, argc);
 	return (0);
 }
