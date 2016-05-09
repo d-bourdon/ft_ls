@@ -6,39 +6,24 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/08 14:12:08 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 17:37:13 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		ft_cmp(int a, int b, int option)
-{
-	if (option == 1)
-	{
-		if (a < b)
-			return (-1);
-		else
-			return (1);
-	}
-	if (a > b)
-		return (-1);
-	else
-		return (1);
-}
-
-t_liste *ft_trie_liste(t_liste *lst, int option, int (*cmp)(int, int, int))
+t_liste *ft_trie_liste(t_liste *lst, int option)
 {
 	t_liste	*tmpa, *tmpb, *tmpc;
 	int		is_sorted;
 
-	if (!lst)
+	if (!lst || option == 99)
 		return (lst);
 	is_sorted = 0;
 	while (!is_sorted)
 	{
 		is_sorted = 1;
-		while (lst && lst->next && !cmp((int)lst->nom, (int)lst->next->nom, option))
+		if (lst && lst->next && (ft_strcmp(lst->nom, lst->next->nom) > 0))
 		{
 			tmpa = lst->next;
 			lst->next = lst->next->next;
@@ -51,7 +36,7 @@ t_liste *ft_trie_liste(t_liste *lst, int option, int (*cmp)(int, int, int))
 		{
 			tmpb = tmpa->next;
 			tmpc = tmpb->next;
-			if (tmpc && !cmp((int)tmpb->nom, (int)tmpc->nom, option))
+			if (tmpc && (ft_strcmp(tmpb->nom, tmpc->nom) > 0))
 			{
 				is_sorted = 0;
 				tmpa->next = tmpc;
@@ -65,18 +50,18 @@ t_liste *ft_trie_liste(t_liste *lst, int option, int (*cmp)(int, int, int))
 	return (lst);
 }
 
-t_liste *ft_trie_liste_temp(t_liste *lst, int option, int (*cmp)(int, int, int))
+t_liste *ft_trie_liste_temp(t_liste *lst, int option)
 {
 	t_liste	*tmpa, *tmpb, *tmpc;
 	int		is_sorted;
 
-	if (!lst)
+	if (!lst || option == 99)
 		return (lst);
 	is_sorted = 0;
 	while (!is_sorted)
 	{
 		is_sorted = 1;
-		while (lst && lst->next && !cmp((int)lst->date_heure, (int)lst->next->date_heure, option))
+		while (lst && lst->next && !ft_strcmp(lst->date_heure, lst->next->date_heure))
 		{
 			tmpa = lst->next;
 			lst->next = lst->next->next;
@@ -89,7 +74,7 @@ t_liste *ft_trie_liste_temp(t_liste *lst, int option, int (*cmp)(int, int, int))
 		{
 			tmpb = tmpa->next;
 			tmpc = tmpb->next;
-			if (tmpc && !cmp((int)tmpb->date_heure, (int)tmpc->date_heure, option))
+			if (tmpc && !ft_strcmp(tmpb->date_heure, tmpc->date_heure))
 			{
 				is_sorted = 0;
 				tmpa->next = tmpc;

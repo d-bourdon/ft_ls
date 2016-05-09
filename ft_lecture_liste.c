@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 15:21:01 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 17:36:24 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 	printf("Hop on sort de la boucle\n");fflush(stdout);
 	if (option[4] == 1)
 	{
-		ft_trie_liste_temp(tmplst, option[4], &(ft_cmp));
+		ft_trie_liste_temp(tmplst, option[4]);
 		printf("On trie la liste qu nivequ du temps\n"); fflush(stdout);
 	}
 	else
 	{
-		ft_trie_liste(tmplst, option[4], &(ft_cmp));
+		*lst_f = ft_trie_liste(tmplst, option[4]);
 		printf("On trie les entree par leur nom\n");fflush(stdout);
 	}
 		if(option[2] == 1)

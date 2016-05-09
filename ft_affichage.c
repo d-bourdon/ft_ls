@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 15:41:54 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 17:32:12 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_affichage(t_liste *lst_f, int *option, int argc)
 	}
 	if (option[0] != 1)
 	{
-		printf("test%s", lst_f->nom);fflush(stdout);
+		//printf("test%s", lst_f->nom);fflush(stdout);
 		ft_affichage_normal(lst_f, option, argc);
 		printf("On affiche normalememt\n");fflush(stdout);
 	}

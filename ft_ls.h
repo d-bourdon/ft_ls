@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 15:19:56 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 17:24:06 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ char						*ft_cherche_u(gid_t gid);
 char						*ft_chmod(mode_t mode);
 void						ft_lecture_liste(t_liste **lst_f, char *argument, int *option);
 t_liste						*ft_pointe_fin_lst(t_liste **liste);
-int							ft_cmp(int a, int b, int option);
-t_liste						*ft_trie_liste(t_liste *lst, int option, int (*cmp)(int, int, int));
-t_liste						*ft_trie_liste_temp(t_liste *lst, int option, int (*cmp)(int, int, int));
+t_liste						*ft_trie_liste(t_liste *lst, int option);
+t_liste						*ft_trie_liste_temp(t_liste *lst, int option);
 char						**ft_trie_tabtab(char **atrier, int taille);
 
 
