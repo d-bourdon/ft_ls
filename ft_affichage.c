@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 14:09:25 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 15:41:54 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 //	printf("la liste = %s\n", lst_f->nom);fflush(stdout);
 	while (lst_f && lst_f->next != NULL)
 	{
-		printf("Une  nouvelle ligne\n");fflush(stdout);
+		//printf("Une  nouvelle ligne\n");fflush(stdout);
 		while(i < 2 && lst_f && lst_f->next != NULL)
 		{
 			ft_putstr(lst_f->nom);
@@ -33,7 +33,7 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 			i++;
 			lst_f = lst_f->next;
 		}
-		printf("\nnext");fflush(stdout);
+	//	printf("\nnext");fflush(stdout);
 		ft_putchar('\n');
 		i = 0;
 	}
@@ -41,8 +41,12 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 
 void	ft_affichage(t_liste *lst_f, int *option, int argc)
 {
+	printf("on entre dans affichage\n"); fflush(stdout);
 	if (lst_f == NULL)
+	{
+		printf("On exit car null\n");fflush(stdout);
 		exit(0);
+	}
 	if (option[0] != 1)
 	{
 		printf("test%s", lst_f->nom);fflush(stdout);

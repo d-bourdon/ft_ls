@@ -6,25 +6,25 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/08 15:40:24 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 15:23:33 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_ajout_liste_dossier(t_liste *lst_f, char *argument)
+void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
 {
-	t_liste		*ajout;
+	t_liste		*ajout = NULL;
 
 	printf("Welcom to ft_ajout_liste_dossier\n"); fflush(stdout);
 	ajout = (t_liste*)malloc(sizeof(t_liste));
 	ajout->nom = (char*)malloc(sizeof(char) * ft_strlen(argument));
 	ft_strcpy(ajout->nom, argument);
-	printf("On strcopy\n"); fflush(stdout);
+	printf("On strcopy -> %s\n", ajout->nom); fflush(stdout);
 	ajout->type = 99;
-	ajout->next = NULL;
+	//ajout->next = NULL;
 	printf("On set\n"); fflush(stdout);
-	ft_lstaddend(&lst_f, ajout);
+	ft_lstaddend(lst_f, ajout);
 	printf("On addend\n"); fflush(stdout);
 }
 

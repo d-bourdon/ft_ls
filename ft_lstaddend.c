@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:01:22 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/04 11:06:30 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/09 15:39:18 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
  	t_liste	*tmp;
  
  	tmp = *liste;
- 	if (tmp == NULL)
- 		tmp = ajout;
+	printf("ajout -> %s\n", ajout->nom);fflush(stdout);
+ 	if (*liste == NULL)
+ 		*liste = ajout;
  	else
  	{
  		while (tmp->next != NULL)
