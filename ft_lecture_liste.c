@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 18:31:19 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/10 12:09:53 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 		printf("On boucle sur readdir\n"); fflush(stdout);
 		if (option[0] == 1 || option[4] == 1)
 			lstat(ft_path(argument, lreaddir->d_name), llstat);
-		if (lreaddir->d_name[0] != '.' )
-		ft_lstaddend(lst_f, ft_ajout_liste(lreaddir, llstat, option));
+		if (option[1] == 1 || lreaddir->d_name[0] != '.' )
+		{
+			ft_lstaddend(lst_f, ft_ajout_liste(lreaddir, llstat, option));
+			printf("On viens de add %s\n", lreaddir->d_name);fflush(stdout);
+		}
 	}
 	printf("Hop on sort de la boucle\n");fflush(stdout);
 	if (option[4] == 1)

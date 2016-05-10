@@ -6,17 +6,43 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/09 18:31:21 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/10 12:15:53 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+t_liste	*ft_ajout_debut_lst(t_liste *lst)
+{
+	t_liste	*tmp;
+	t_liste *tmp2;
+
+	tmp = lst;
+	while (tmp && tmp->next && tmp->next->type != 99)
+	{
+		tmp = tmp->next;
+	}
+	if (tmp && tmp->next && tmp->next->next->next && tmp->next->type == 99)
+	{
+		tmp2 = tmp->next;
+		tmp->next = tmp->next->next->next;
+		tmp2->next = lst;
+		lst = tmp2;
+	}
+	return (lst);
+}
 
 t_liste *ft_trie_liste(t_liste *lst, int option)
 {
 	t_liste	*tmpa, *tmpb, *tmpc;
 	int		is_sorted;
 
+	tmpa = lst;
+	while(tmpa->next && tmpa)
+	{
+		printf("%s\n", tmpa->nom);fflush(stdout);
+		tmpa = tmpa->next;
+	}
 	if (!lst || option == 99)
 		return (lst);
 	is_sorted = 0;
@@ -47,7 +73,7 @@ t_liste *ft_trie_liste(t_liste *lst, int option)
 				tmpa = tmpa->next;
 		}
 	}
-	return (lst);
+	return (ft_ajout_debut_lst(lst));
 }
 
 t_liste *ft_trie_liste_temp(t_liste *lst, int option)
