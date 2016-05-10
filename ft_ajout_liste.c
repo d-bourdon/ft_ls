@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/10 14:08:06 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/10 16:48:51 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *optio
 	ajout = (t_liste*)malloc(sizeof(t_liste));
 	ajout->nom = ft_strdup(lreaddir->d_name);
 	ajout->type = lreaddir->d_type;
+	printf("Valeur de d_type : %u", lreaddir->d_type);
 	ajout->next = NULL;
 	if (option[0] == 1 || option[4] == 1)
 	{

@@ -6,20 +6,20 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 14:08:43 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/10 14:51:36 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/10 16:48:49 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-char	ft_detection_type(unsigned char type)
+char	ft_detection_type(uint8_t type)
 {
-	printf("%c -- ", type);
-	if (type == 4)
+	if (type == DT_DIR)
 		return ('d');
-	if (type == 8)
+	if (type == DT_REG)
 		return ('-');
-	if (type == 10)
+	if (type == DT_LNK)
 		return('l');
+	printf("%u\n", type);
 	return ('?');
 }
