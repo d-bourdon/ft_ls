@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 18:31:24 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/10 14:36:45 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 typedef struct				s_liste
 {
 	char					*nom;
-	int						type;
+	unsigned char			type;
 	char					*droits;
 	int						lien;
 	char					*groupe_u;
@@ -52,7 +52,7 @@ t_liste						*ft_pointe_fin_lst(t_liste **liste);
 t_liste						*ft_trie_liste(t_liste *lst, int option);
 t_liste						*ft_trie_liste_temp(t_liste *lst, int option);
 char						**ft_trie_tabtab(char **atrier, int taille);
-
+char						ft_detection_type(unsigned char type);
 
 
 #endif

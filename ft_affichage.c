@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/09 18:31:14 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/10 14:08:12 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 	while (lst_f && lst_f->next != NULL)
 	{
 		//printf("Une  nouvelle ligne\n");fflush(stdout);
-		while (i < (w.ws_col / maxnom) && lst_f && lst_f->next != NULL)
+		while (i < (w.ws_col / maxnom) && lst_f)
 		{
 			if (lst_f->type == 99 && argc > 1)
 			{
@@ -80,9 +80,9 @@ void	ft_affichage(t_liste *lst_f, int *option, int argc)
 	}
 		else
 	{
-		while (lst_f && lst_f->next != NULL)
+		while (lst_f)
 		{
-			ft_putnbr(lst_f->type);
+			ft_putchar(ft_detection_type(lst_f->type));
 			ft_putchar(' ');
 			ft_putstr(lst_f->droits);
 			ft_putstr("  ");
@@ -93,6 +93,8 @@ void	ft_affichage(t_liste *lst_f, int *option, int argc)
 			ft_putnbr(lst_f->taille);
 			ft_putchar(' ');
 			ft_putstr(lst_f->date_heure);
+			ft_putchar(' ');
+			ft_putstr(lst_f->nom);
 			ft_putchar('\n');
 			lst_f = lst_f->next;
 		}

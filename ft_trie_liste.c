@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/10 12:15:53 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/10 13:16:38 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ t_liste *ft_trie_liste(t_liste *lst, int option)
 	t_liste	*tmpa, *tmpb, *tmpc;
 	int		is_sorted;
 
-	tmpa = lst;
-	while(tmpa->next && tmpa)
-	{
-		printf("%s\n", tmpa->nom);fflush(stdout);
-		tmpa = tmpa->next;
-	}
 	if (!lst || option == 99)
 		return (lst);
 	is_sorted = 0;
@@ -58,7 +52,7 @@ t_liste *ft_trie_liste(t_liste *lst, int option)
 			is_sorted = 0;
 		}
 		tmpa = lst;
-		while (tmpa && tmpa->next)
+		while (tmpa && tmpa->next && tmpa->next->next)
 		{
 			tmpb = tmpa->next;
 			tmpc = tmpb->next;
@@ -72,6 +66,12 @@ t_liste *ft_trie_liste(t_liste *lst, int option)
 			else
 				tmpa = tmpa->next;
 		}
+	}
+	tmpa = lst;
+	while(tmpa)
+	{
+		printf("%s\n", tmpa->nom);fflush(stdout);
+		tmpa = tmpa->next;
 	}
 	return (ft_ajout_debut_lst(lst));
 }
