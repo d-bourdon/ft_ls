@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/12 12:50:30 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/12 16:25:43 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 	}
 	else
 	{
-		ft_lstaddend(lst_f, ft_trie_liste(tmplst, option[4]));
+		tmplst = ft_trie_liste(tmplst, option[4]);
 		printf("On trie les entree par leur nom\n");fflush(stdout);
 	}
 	if(option[2] == 1)
@@ -58,6 +58,7 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 			printf("Why not");
 			if (tmplst->type == 'd' && !(ft_strcmp(tmplst->nom, ".") == 0 || ft_strcmp(tmplst->nom, "..") == 0))
 			{
+
 				ft_lecture_liste(lst_f, ft_path(argument, tmplst->nom), option);
 				printf("Tout de meme !");
 			}
