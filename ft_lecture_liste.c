@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/10 16:48:54 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/12 12:50:30 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 			lstat(ft_path(argument, lreaddir->d_name), llstat);
 		if (option[1] == 1 || lreaddir->d_name[0] != '.' )
 		{
-			ft_lstaddend(lst_f, ft_ajout_liste(lreaddir, llstat, option));
+			ft_lstaddend(lst_f, ft_ajout_liste(lreaddir, llstat, option, argument));
 			printf("On viens de add %s\n", lreaddir->d_name);fflush(stdout);
 		}
 	}
@@ -47,15 +47,20 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 	}
 	else
 	{
-		*lst_f = ft_trie_liste(tmplst, option[4]);
+		ft_lstaddend(lst_f, ft_trie_liste(tmplst, option[4]));
 		printf("On trie les entree par leur nom\n");fflush(stdout);
 	}
-		if(option[2] == 1)
+	if(option[2] == 1)
 	{
-		while(tmplst->next != NULL)
+		printf("Hey om recurcive");
+		while(tmplst)
 		{
-			if (tmplst->type == 1 && !(ft_strcmp(tmplst->nom, ".") || ft_strcmp(tmplst->nom, "..")))
+			printf("Why not");
+			if (tmplst->type == 'd' && !(ft_strcmp(tmplst->nom, ".") == 0 || ft_strcmp(tmplst->nom, "..") == 0))
+			{
 				ft_lecture_liste(lst_f, ft_path(argument, tmplst->nom), option);
+				printf("Tout de meme !");
+			}
 			tmplst = tmplst->next;
 		}
 	}

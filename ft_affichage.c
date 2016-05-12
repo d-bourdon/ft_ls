@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/10 14:08:12 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/11 17:03:43 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 
 void	ft_affichage(t_liste *lst_f, int *option, int argc)
 {
+	int		maxtaille;
+
+	maxtaille = 0;
 	printf("on entre dans affichage\n"); fflush(stdout);
 	if (lst_f == NULL)
 	{
@@ -80,10 +83,10 @@ void	ft_affichage(t_liste *lst_f, int *option, int argc)
 	}
 		else
 	{
+
 		while (lst_f)
 		{
-			ft_putchar(ft_detection_type(lst_f->type));
-			ft_putchar(' ');
+			ft_putchar(lst_f->type);
 			ft_putstr(lst_f->droits);
 			ft_putstr("  ");
 			ft_putnbr(lst_f->lien);

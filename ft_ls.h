@@ -6,23 +6,12 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/10 16:49:02 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/11 17:03:50 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
-
-# define DT_UNKNOWN       0
-# define DT_FIFO          1
-# define DT_CHR           2
-# define DT_DIR           4
-# define DT_BLK           6
-# define DT_REG           8
-# define DT_LNK          10
-# define DT_SOCK         12
-# define DT_WHT          14
-
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -39,7 +28,7 @@
 typedef struct				s_liste
 {
 	char					*nom;
-	uint8_t					type;
+	char					type;
 	char					*droits;
 	int						lien;
 	char					*groupe_u;
@@ -54,7 +43,7 @@ int							*ft_lecture_option(char ***argv, int *argc);
 char						*ft_path(char *src, char *fichier);
 void						ft_lstaddend(t_liste **liste, t_liste *ajout);
 void						ft_ajout_liste_dossier(t_liste **lst_f, char *argument);
-t_liste						*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *option);
+t_liste						*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *option, char *argument);
 void						ft_affichage_normal(t_liste *lst_f, int *option, int argc);
 void						ft_affichage(t_liste *lst_f, int *option, int argc);
 char						*ft_cherche_u(gid_t gid);
@@ -65,6 +54,7 @@ t_liste						*ft_trie_liste(t_liste *lst, int option);
 t_liste						*ft_trie_liste_temp(t_liste *lst, int option);
 char						**ft_trie_tabtab(char **atrier, int taille);
 char						ft_detection_type(uint8_t type);
-
+char						ft_dossier_fichier(char *path);
+char						*ft_heure(time_t heure);
 
 #endif
