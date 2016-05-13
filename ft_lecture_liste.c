@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/12 16:25:43 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/13 14:30:42 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 {
+	int				nb;
 	DIR				*fd;
 	struct dirent	*lreaddir;
 	struct stat		*llstat;
 	t_liste			*tmplst = NULL;
 	
+	nb = 0;
 	fd = opendir(argument);
 	if (fd == NULL)
 		return (ft_erreur(argument, 2));
@@ -30,6 +32,7 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 	llstat = (struct stat*)malloc(sizeof(struct stat));
 	while((lreaddir = readdir(fd)) != NULL)
 	{
+		nb++;
 		printf("On boucle sur readdir\n"); fflush(stdout);
 		if (option[0] == 1 || option[4] == 1)
 			lstat(ft_path(argument, lreaddir->d_name), llstat);
@@ -39,6 +42,7 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 			printf("On viens de add %s\n", lreaddir->d_name);fflush(stdout);
 		}
 	}
+	closedir(fd);
 	printf("Hop on sort de la boucle\n");fflush(stdout);
 	if (option[4] == 1)
 	{
@@ -53,9 +57,10 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 	if(option[2] == 1)
 	{
 		printf("Hey om recurcive");
-		while(tmplst)
+		while(tmplst && nb > 0)
 		{
 			printf("Why not");
+			nb--;
 			if (tmplst->type == 'd' && !(ft_strcmp(tmplst->nom, ".") == 0 || ft_strcmp(tmplst->nom, "..") == 0))
 			{
 
@@ -63,6 +68,7 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 				printf("Tout de meme !");
 			}
 			tmplst = tmplst->next;
+			printf("\n\n		NEXT ---- > %s", argument); fflush(stdout);
 		}
 	}
 	printf("On a fini la lecture sur %s\n", argument);fflush(stdout);
