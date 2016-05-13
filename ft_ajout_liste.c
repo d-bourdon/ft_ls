@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/12 15:27:01 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/13 13:33:21 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
 	printf("Welcom to ft_ajout_liste_dossier\n"); fflush(stdout);
 	ajout = (t_liste*)malloc(sizeof(t_liste));
 	ajout->nom = (char*)malloc(sizeof(char) * ft_strlen(argument));
+	ajout->droits = NULL;
+	ajout->lien = 0;
+	ajout->groupe_u = NULL;
+	ajout->taille = 0;
+	ajout->date_heure = NULL;
 	ft_strcpy(ajout->nom, argument);
 	printf("On strcopy -> %s\n", ajout->nom); fflush(stdout);
 	ajout->type = 99;
