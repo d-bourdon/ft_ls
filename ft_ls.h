@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/11 17:03:50 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/13 18:16:42 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,17 @@ typedef struct				s_liste
 	char					*groupe_u;
 	int						taille;
 	char					*date_heure;
+	struct s_info			*info;
 	struct s_liste			*next;
 }							t_liste;
+
+typedef struct				s_info
+{
+	int						maxnom;
+	int						maxtaille;
+	int						maxu;
+	int						maxg;
+}							t_info;
 
 void						ft_erreur(char *str, int mode);
 int							*ft_detection_option(char *str, int *option);
