@@ -6,7 +6,7 @@
 #    By: paim <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/07 15:51:25 by paim              #+#    #+#              #
-#    Updated: 2016/04/30 15:34:38 by dbourdon         ###   ########.fr        #
+#    Updated: 2016/05/13 18:31:57 by dbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,8 @@ SRC = ft_memset.c\
 	  ft_isspace.c\
 	  ft_isblank.c\
 	  ft_itoa.c\
-	  ft_strsplit.c
+	  ft_strsplit.c\
+	  ft_intlen.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/13 18:09:31 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/13 18:52:14 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 	struct winsize	w;
 
 	tmp = lst_f;
-	maxnom = 0;
+	maxnom = 10;
 	ioctl(0, TIOCGWINSZ, &w);
-	while (tmp->next)
-	{
-		if ((int)ft_strlen(tmp->nom) > maxnom && tmp->type != 99)
-			maxnom = (int)ft_strlen(tmp->nom);
-		tmp = tmp->next;
-	}
+//	while (tmp->next)
+//	{
+//		if ((int)ft_strlen(tmp->nom) > maxnom && tmp->type != 99)
+//			maxnom = (int)ft_strlen(tmp->nom);
+//		tmp = tmp->next;
+//	}
 	maxnom = maxnom + 3;
 	if (option[0] == 100)
 	{

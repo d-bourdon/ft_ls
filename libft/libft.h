@@ -6,7 +6,7 @@
 /*   By: paim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 15:55:47 by paim              #+#    #+#             */
-/*   Updated: 2016/01/11 16:07:55 by paim             ###   ########.fr       */
+/*   Updated: 2016/05/13 18:31:21 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ int					ft_isupper(int c);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+int					ft_intlen(int num);
 
 #endif
