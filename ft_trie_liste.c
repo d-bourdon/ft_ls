@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/10 13:16:38 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/13 17:10:20 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_liste	*ft_ajout_debut_lst(t_liste *lst)
 {
+	printf("On entre dans ajout debut\n");fflush(stdout);
 	t_liste	*tmp;
 	t_liste *tmp2;
 
@@ -22,13 +23,21 @@ t_liste	*ft_ajout_debut_lst(t_liste *lst)
 	{
 		tmp = tmp->next;
 	}
-	if (tmp && tmp->next && tmp->next->next->next && tmp->next->type == 99)
+	printf("On a trouve notre 99\n"); fflush(stdout);
+	if (tmp && tmp->next && tmp->next->type == 99)
 	{
+		printf("ici ?"); fflush(stdout);
 		tmp2 = tmp->next;
-		tmp->next = tmp->next->next->next;
+		printf("aie\n");fflush(stdout);
+		if (tmp->next->next && tmp->next->next->next)
+			tmp->next = tmp->next->next->next;
+		else
+			tmp->next = NULL;
+		printf("a nop"); fflush(stdout);
 		tmp2->next = lst;
 		lst = tmp2;
 	}
+	printf("fini"); fflush(stdout);
 	return (lst);
 }
 
@@ -73,6 +82,7 @@ t_liste *ft_trie_liste(t_liste *lst, int option)
 		printf("%s\n", tmpa->nom);fflush(stdout);
 		tmpa = tmpa->next;
 	}
+	printf("hey On a fini le tri\n"); fflush(stdout);
 	return (ft_ajout_debut_lst(lst));
 }
 
