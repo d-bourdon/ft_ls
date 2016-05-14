@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/13 13:55:26 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/14 16:41:36 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	ft_dossier_fichier(char *path)
 		return ('-');
 }
 
-void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
+void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument, t_info f)
 {
 	t_liste		*ajout = NULL;
 
@@ -38,6 +38,7 @@ void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
 	ajout->groupe_u = NULL;
 	ajout->taille = 0;
 	ajout->date_heure = NULL;
+	ajout->info = f;
 	ft_strcpy(ajout->nom, argument);
 	printf("On strcopy -> %s\n", ajout->nom); fflush(stdout);
 	ajout->type = 99;
@@ -47,7 +48,7 @@ void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
 	printf("On addend\n"); fflush(stdout);
 }
 
-t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *option, char *argument)
+t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *option, char *argument, t_info f)
 {
 	t_liste		*ajout;
 
@@ -56,12 +57,18 @@ t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *optio
 	ajout->type = ft_dossier_fichier(ft_path(argument, lreaddir->d_name));
 	printf("Valeur de d_type : %u", lreaddir->d_type);
 	ajout->next = NULL;
+	ajout->info = f;
+	f->maxnom = (ft_strlen(ajout->nom) > f->maxnom)? ft_strlen(ajout->nom) : f->maxnom ;
 	if (option[0] == 1 || option[4] == 1)
 	{
 		ajout->droits = ft_strdup(ft_chmod(llstat->st_mode));
 		ajout->lien = llstat->st_nlink;
+		f->maxlien = (ft_intlen(ajout->lien) > f->maxlien)? ft_intlen(ajout->lien) : f->maxlien ;
 		ajout->groupe_u = ft_strdup(ft_cherche_u(llstat->st_gid));
+		f->maxg = (ft_strlen(ajout->groupe_u) > f->maxg)? ft_strlen(ajout->group_u) : f->maxg ;
+	//f->maxu = (ft_strlen(ajout->utili_u) > f->maxg)? ft_strlen(ajout->group_u) : f->maxg ;
 		ajout->taille = (int)llstat->st_size;
+		f->maxtaille = (ft_intlen(ajout->taille) > f->maxtaille)? ft_intlen(ajout->taille) : f->maxtaille ;
 		ajout->date_heure = ft_heure(llstat->st_mtime);
 	}
 	return (ajout);
