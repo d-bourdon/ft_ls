@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/16 15:55:17 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/16 17:20:21 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ char				**ft_trie_tabtab(char **atrier, int taille);
 char				ft_detection_type(uint8_t type);
 char				ft_dossier_fichier(char *path);
 char				*ft_heure(time_t heure);
+int					max_nom_lst(t_liste *lst_f);
+void				ft_affichage_liste(t_liste *lst_f, int *option, int argc);
 
 #endif
