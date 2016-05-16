@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/16 16:16:26 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/16 16:18:57 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 		tmp = tmp->next;
 	}
 	maxnom = maxnom + 3;
-	// tes dukashdk gashjgdhsajgdh sjkagd
 	if (option[0] == 100)
 	{
 		printf("On exit pour use argc\n"); fflush(stdout);
