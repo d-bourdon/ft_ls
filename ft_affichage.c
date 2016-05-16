@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/16 17:24:56 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/16 17:57:26 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int		max_nom_lst(t_liste *lst_f)
 	taille = 0;
 	i = 0;
 	tmp = lst_f;
-	while (tmp && tmp->type != 99)
+	while (tmp && (tmp->type != 99))
 	{
 		i = ft_strlen(tmp->nom);
-		if (i < taille)
+		if (i > taille)
 			taille = i;
 		tmp = tmp->next;
 	}
@@ -46,6 +46,7 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 	ioctl(0, TIOCGWINSZ, &w);
 	i = 0;
 	j = 0;
+	//lst_f = lst_f->next;
 	while (lst_f && lst_f->next != NULL)
 	{
 		if (lst_f->type == 99)
@@ -54,16 +55,14 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 			{
 				ft_putchar('\n');
 				ft_putstr(lst_f->nom);
-				ft_putstr(":\n");
+				ft_putstr(":");
 			}
 			lst_f = lst_f->next;
 		}
 		else
 		{
-			printf("avant max nom"); fflush(stdout);
 			maxnom = max_nom_lst(lst_f);
-			printf("apres max nom");fflush(stdout);
-			while (lst_f && (lst_f->type =! 99))
+			while (lst_f && (lst_f->type != 99))
 			{
 				if (i == 0 || i < (w.ws_col / maxnom))
 				{
@@ -82,6 +81,7 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 				}
 			}
 		}
+		ft_putchar('\n');
 	}
 }
 
