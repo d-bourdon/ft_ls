@@ -33,3 +33,6 @@
 
 # Backup vim
 *.swp
+
+# Binaire du projet
+ft_ls
