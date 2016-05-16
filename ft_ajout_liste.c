@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/13 13:55:26 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/16 14:10:08 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
 	ajout->droits = NULL;
 	ajout->lien = 0;
 	ajout->groupe_u = NULL;
+	ajout->nom_u = NULL;
 	ajout->taille = 0;
 	ajout->date_heure = NULL;
 	ft_strcpy(ajout->nom, argument);
@@ -60,7 +61,8 @@ t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *optio
 	{
 		ajout->droits = ft_strdup(ft_chmod(llstat->st_mode));
 		ajout->lien = llstat->st_nlink;
-		ajout->groupe_u = ft_strdup(ft_cherche_u(llstat->st_gid));
+		ajout->groupe_u = ft_strdup(ft_cherche_g(llstat->st_gid));
+		ajout->nom_u = ft_strdup(ft_cherche_u(llstat->st_uid));
 		ajout->taille = (int)llstat->st_size;
 		ajout->date_heure = ft_heure(llstat->st_mtime);
 	}

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/13 18:52:14 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/16 14:18:48 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ void	ft_affichage(t_liste *lst_f, int *option, int argc)
 			ft_putstr(lst_f->droits);
 			ft_putstr("  ");
 			ft_putnbr(lst_f->lien);
+			ft_putchar(' ');
+			ft_putstr(lst_f->nom_u);
+			ft_putchar(' ');
 			ft_putchar(' ');
 			ft_putstr(lst_f->groupe_u);
 			ft_putchar(' ');
