@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:45:27 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/14 14:27:14 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/13 14:55:21 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		main(int argc, char **argv)
 	int		i;
 	t_liste	*lst_f = NULL;
 	char	**liste_arg;
-	t_info	*f = NULL;
 
 	argv++;
 	i = 0;
@@ -31,14 +30,8 @@ int		main(int argc, char **argv)
 	printf("On as trier\n"); fflush(stdout);
 	while (i < (argc - 1) && liste_arg[i] != NULL)
 	{
-		f = (struct s_info*)malloc(sizeof(struct s_info)* 1);
-		f->maxnom = 0;
-		f->maxtaille = 0;
-		f->maxu = 0;
-		f->maxg = 0;
-		f->maxlien = 0;
 		printf("On boucle %s\n", liste_arg[i]); fflush(stdout);
-		ft_lecture_liste(&lst_f, liste_arg[i++], option, f);
+		ft_lecture_liste(&lst_f, liste_arg[i++], option);
 	}
 	printf("\n\nOn as fini de boucler\n"); fflush(stdout);
 	ft_affichage(lst_f, option, argc);

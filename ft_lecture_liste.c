@@ -6,13 +6,13 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/14 16:39:50 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/13 15:08:37 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option, t_info f)
+void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 {
 	int				nb;
 	DIR				*fd;
@@ -25,7 +25,7 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option, t_info f)
 	if (fd == NULL)
 		return (ft_erreur(argument, 2));
 	printf("On entre\n"); fflush(stdout);
-	ft_ajout_liste_dossier(lst_f, argument, f);
+	ft_ajout_liste_dossier(lst_f, argument);
 	printf("On a ajoute le dossier base\n"); fflush(stdout);
 	tmplst = ft_pointe_fin_lst(lst_f);
 	printf("On lastpointe\n"); fflush(stdout);
@@ -38,7 +38,7 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option, t_info f)
 			lstat(ft_path(argument, lreaddir->d_name), llstat);
 		if (option[1] == 1 || lreaddir->d_name[0] != '.' )
 		{
-			ft_lstaddend(lst_f, ft_ajout_liste(lreaddir, llstat, option, argument, f));
+			ft_lstaddend(lst_f, ft_ajout_liste(lreaddir, llstat, option, argument));
 			printf("On viens de add %s\n", lreaddir->d_name);fflush(stdout);
 		}
 	}
@@ -64,7 +64,7 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option, t_info f)
 			if (tmplst->type == 'd' && !(ft_strcmp(tmplst->nom, ".") == 0 || ft_strcmp(tmplst->nom, "..") == 0))
 			{
 
-				ft_lecture_liste(lst_f, ft_path(argument, tmplst->nom), option, f);
+				ft_lecture_liste(lst_f, ft_path(argument, tmplst->nom), option);
 				printf("Tout de meme !");
 			}
 			tmplst = tmplst->next;
