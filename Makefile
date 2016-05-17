@@ -6,7 +6,7 @@
 #    By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/30 15:44:04 by dbourdon          #+#    #+#              #
-#    Updated: 2016/05/13 15:58:56 by dbourdon         ###   ########.fr        #
+#*   Updated: 2016/05/17 14:57:51 by dbourdon         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,3 +40,4 @@ fclean: clean
 	@echo "totale..."
 
 re: fclean all
+	@make re -C libft/

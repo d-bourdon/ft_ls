@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/17 13:00:33 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/17 16:09:14 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,22 +88,26 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 
 void	ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 {
-	int		max[4];
+	int		*max;
 
-	max[0] = 0;
-	max[1] = 0;
-	max[2] = 0;
-	max[3] = 0;
-	max_taille_lst(lst_f, max);
+	max = (int*)malloc(sizeof(int) * 5);
+	ft_bzero(max, 20);
+	max = max_taille_lst(lst_f, max);
 	argc = 2;
 	option[1] = 1;
+	if (argc < 3)
+		lst_f = lst_f->next;
+	ft_putstr("total ");
+	ft_putnbr(max[4]);
+	ft_putchar('\n');
 	while (lst_f)
 	{
 		if (lst_f->type != 99)
 		{
+
 			ft_putchar(lst_f->type);
 			ft_putstr(lst_f->droits);
-			ft_putstr("  ");
+			ft_putstr(" ");
 			ft_putnbr_tab(lst_f->lien, max[0]);
 			ft_putchar(' ');
 			ft_putstr_tab(lst_f->nom_u, max[1]);

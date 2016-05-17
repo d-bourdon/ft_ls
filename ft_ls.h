@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/17 12:43:11 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/17 16:06:55 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_liste
 	char			*groupe_u;
 	char			*nom_u;
 	int				taille;
+	int				nb_bloc;
 	char			*date_heure;
 	struct s_liste	*next;
 }					t_liste;
@@ -61,7 +62,7 @@ char				ft_dossier_fichier(char *path);
 char				*ft_heure(time_t heure);
 int					max_nom_lst(t_liste *lst_f);
 void				ft_affichage_liste(t_liste *lst_f, int *option, int argc);
-void				max_taille_lst(t_liste *lst, int *max);
+int					*max_taille_lst(t_liste *lst, int *max);
 void				ft_putnbr_tab(int nb, int max);
 void				ft_putstr_tab(char *str, int max);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 18:20:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/13 18:29:33 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/17 14:59:14 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@ int		ft_intlen(int num)
 	int		i;
 
 	i = 0;
-	tmp = num;
+	tmp = (long)num;
 	if (tmp < 0)
 	{
 		tmp = tmp * -1;
 		i++;
 	}
+	if (tmp == 0)
+		return (1);
 	while (tmp > 0)
 	{
 		tmp = tmp / 10;
 		i++;
 	}
-	return ((int)tmp);
+	return (i);
 }
