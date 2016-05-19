@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/17 16:07:35 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/19 15:03:45 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
 	ajout->nom_u = NULL;
 	ajout->taille = 0;
 	ajout->nb_bloc = 0;
+	ajout->posix = 0;
 	ajout->date_heure = NULL;
 	ft_strcpy(ajout->nom, argument);
 	printf("On strcopy -> %s\n", ajout->nom); fflush(stdout);
@@ -67,6 +68,7 @@ t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *optio
 		ajout->taille = (int)llstat->st_size;
 		ajout->nb_bloc = (int)llstat->st_blocks;
 		ajout->date_heure = ft_heure(llstat->st_mtime);
+		ajout->posix = llstat->st_mtime;
 	}
 	return (ajout);
 }

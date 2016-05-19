@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/17 16:06:55 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/19 15:02:00 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct		s_liste
 	int				taille;
 	int				nb_bloc;
 	char			*date_heure;
+	int				posix;
 	struct s_liste	*next;
 }					t_liste;
 
@@ -65,4 +66,7 @@ void				ft_affichage_liste(t_liste *lst_f, int *option, int argc);
 int					*max_taille_lst(t_liste *lst, int *max);
 void				ft_putnbr_tab(int nb, int max);
 void				ft_putstr_tab(char *str, int max);
+int					ft_lstswap_bac(t_liste **a);
+int					ft_lstswap_acb(t_liste **a);
+
 #endif
