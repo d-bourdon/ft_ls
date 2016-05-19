@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/19 15:44:58 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/19 17:29:20 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ void				ft_putnbr_tab(int nb, int max);
 void				ft_putstr_tab(char *str, int max);
 int					ft_lstswap_bac(t_liste **a);
 int					ft_lstswap_acb(t_liste **a);
+char				ft_type(mode_t mode);
+char				*ft_lien_nom(char *nom, char *dir);
 
 #endif
