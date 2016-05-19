@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/19 17:28:48 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/19 17:49:55 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
 {
 	t_liste		*ajout = NULL;
 
-	printf("Welcom to ft_ajout_liste_dossier\n"); fflush(stdout);
 	ajout = (t_liste*)malloc(sizeof(t_liste));
 	ajout->nom = (char*)malloc(sizeof(char) * ft_strlen(argument));
 	ajout->droits = NULL;
@@ -67,12 +66,9 @@ void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
 	ajout->posix = 0;
 	ajout->date_heure = NULL;
 	ft_strcpy(ajout->nom, argument);
-	printf("On strcopy -> %s\n", ajout->nom); fflush(stdout);
 	ajout->type = 99;
 	ajout->next = NULL;
-	printf("On set\n"); fflush(stdout);
 	ft_lstaddend(lst_f, ajout);
-	printf("On addend\n"); fflush(stdout);
 }
 
 t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *option, char *argument)
@@ -83,7 +79,6 @@ t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *optio
 	ajout = (t_liste*)malloc(sizeof(t_liste));
 	ajout->nom = ft_strdup(lreaddir->d_name);
 	ajout->type = ft_dossier_fichier(ft_path(argument, lreaddir->d_name));
-	printf("Valeur de d_type : %u", lreaddir->d_type);
 	ajout->next = NULL;
 	if (option[0] == 1 || option[4] == 1)
 	{
