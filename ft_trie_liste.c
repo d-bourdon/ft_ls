@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/19 15:00:53 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/19 15:21:51 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,37 +97,55 @@ t_liste *ft_trie_liste(t_liste *lst, int option)
 	return (ft_ajout_debut_lst(lst));
 }
 
-t_liste *ft_trie_liste_temp(t_liste *lst, int option)
+t_liste *ft_trie_liste_temp_inv(t_liste *lst)
 {
 	t_liste	*tmpa, *tmpb, *tmpc;
 	int		is_sorted;
 
-	if (!lst || option == 99)
+	if (!lst)
 		return (lst);
-	is_sorted = 0;
-	while (!is_sorted)
+	is_sorted = 1;
+	while (is_sorted)
 	{
-		is_sorted = 1;
-		while (lst && lst->next && !ft_strcmp(lst->date_heure, lst->next->date_heure))
-		{
-			tmpa = lst->next;
-			lst->next = lst->next->next;
-			tmpa->next = lst;
-			lst = tmpa;
-			is_sorted = 0;
-		}
+		is_sorted = 0;
+		while (lst && lst->next && (lst->posix < lst->next->posix))
+			is_sorted = ft_lstswap_bac(&lst);
 		tmpa = lst;
 		while (tmpa && tmpa->next)
 		{
 			tmpb = tmpa->next;
 			tmpc = tmpb->next;
-			if (tmpc && !ft_strcmp(tmpb->date_heure, tmpc->date_heure))
-			{
-				is_sorted = 0;
-				tmpa->next = tmpc;
-				tmpb->next = tmpc->next;
-				tmpc->next = tmpb;
-			}
+			if (tmpc && (tmpb->posix < tmpc->posix))
+				is_sorted = ft_lstswap_acb(&tmpa);
+			else
+				tmpa = tmpa->next;
+		}
+	}
+	return (lst);
+}
+
+t_liste *ft_trie_liste_temp(t_liste *lst, int option)
+{
+	t_liste	*tmpa, *tmpb, *tmpc;
+	int		is_sorted;
+
+	if (!lst)
+		return (lst);
+	if (option == 0)
+		return (ft_ajout_debut_lst(ft_trie_liste_temp_inv(lst)));
+	is_sorted = 1;
+	while (is_sorted)
+	{
+		is_sorted = 0;
+		while (lst && lst->next && (lst->posix > lst->next->posix))
+			is_sorted = ft_lstswap_bac(&lst);
+		tmpa = lst;
+		while (tmpa && tmpa->next)
+		{
+			tmpb = tmpa->next;
+			tmpc = tmpb->next;
+			if (tmpc && (tmpb->posix > tmpc->posix))
+				is_sorted = ft_lstswap_acb(&tmpa);
 			else
 				tmpa = tmpa->next;
 		}

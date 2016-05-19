@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/19 15:02:00 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/19 15:44:58 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ char				*ft_chmod(mode_t mode);
 void				ft_lecture_liste(t_liste **lst_f, char *argument, int *option);
 t_liste				*ft_pointe_fin_lst(t_liste **liste);
 t_liste				*ft_trie_liste(t_liste *lst, int option);
+t_liste				*ft_trie_liste_inv(t_liste *lst);
 t_liste				*ft_trie_liste_temp(t_liste *lst, int option);
+t_liste				*ft_trie_liste_temp_inv(t_liste *lst);
 char				**ft_trie_tabtab(char **atrier, int taille);
 char				ft_detection_type(uint8_t type);
 char				ft_dossier_fichier(char *path);
