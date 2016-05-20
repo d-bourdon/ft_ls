@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/20 10:28:09 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/20 14:21:59 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ t_liste	*ft_ajout_debut_lst(t_liste *lst)
 	return (lst);
 }
 
-t_liste *ft_trie_liste_inv(t_liste *lst)
+t_liste	*ft_trie_liste_inv(t_liste *lst)
 {
-	t_liste	*tmpa, *tmpb, *tmpc;
+	t_liste	*tmpa;
+	t_liste	*tmpb;
+	t_liste	*tmpc;
 	int		is_sorted;
 
 	if (!lst)
@@ -60,9 +62,9 @@ t_liste *ft_trie_liste_inv(t_liste *lst)
 	return (ft_ajout_debut_lst(lst));
 }
 
-t_liste *ft_trie_liste(t_liste *lst, int option)
+t_liste	*ft_trie_liste(t_liste *lst, int option)
 {
-	t_liste	*tmpa, *tmpb, *tmpc;
+	t_liste	*tmpa;
 	int		is_sorted;
 
 	if (!lst)
@@ -78,9 +80,8 @@ t_liste *ft_trie_liste(t_liste *lst, int option)
 		tmpa = lst;
 		while (tmpa && tmpa->next && tmpa->next->next)
 		{
-			tmpb = tmpa->next;
-			tmpc = tmpb->next;
-			if (tmpc && (ft_strcmp(tmpb->nom, tmpc->nom) > 0))
+			if (tmpa->next->next &&
+					(ft_strcmp(tmpa->next->nom, tmpa->next->next->nom) > 0))
 				is_sorted = ft_lstswap_acb(&tmpa);
 			else
 				tmpa = tmpa->next;
@@ -89,9 +90,11 @@ t_liste *ft_trie_liste(t_liste *lst, int option)
 	return (ft_ajout_debut_lst(lst));
 }
 
-t_liste *ft_trie_liste_temp_inv(t_liste *lst)
+t_liste	*ft_trie_liste_temp_inv(t_liste *lst)
 {
-	t_liste	*tmpa, *tmpb, *tmpc;
+	t_liste	*tmpa;
+	t_liste	*tmpb;
+	t_liste	*tmpc;
 	int		is_sorted;
 
 	if (!lst)
@@ -116,9 +119,9 @@ t_liste *ft_trie_liste_temp_inv(t_liste *lst)
 	return (lst);
 }
 
-t_liste *ft_trie_liste_temp(t_liste *lst, int option)
+t_liste	*ft_trie_liste_temp(t_liste *lst, int option)
 {
-	t_liste	*tmpa, *tmpb, *tmpc;
+	t_liste	*tmpa;
 	int		is_sorted;
 
 	if (!lst)
@@ -134,9 +137,8 @@ t_liste *ft_trie_liste_temp(t_liste *lst, int option)
 		tmpa = lst;
 		while (tmpa && tmpa->next)
 		{
-			tmpb = tmpa->next;
-			tmpc = tmpb->next;
-			if (tmpc && (tmpb->posix > tmpc->posix))
+			if (tmpa->next->next &&
+					(tmpa->next->posix > tmpa->next->next->posix))
 				is_sorted = ft_lstswap_acb(&tmpa);
 			else
 				tmpa = tmpa->next;

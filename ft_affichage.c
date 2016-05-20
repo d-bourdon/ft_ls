@@ -6,11 +6,12 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/20 10:54:29 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/20 17:00:52 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
 int		max_nom_lst(t_liste *lst_f)
 {
 	t_liste	*tmp;
@@ -32,11 +33,11 @@ int		max_nom_lst(t_liste *lst_f)
 
 void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 {
-	int		i;
-	int		j;
-	int		maxnom;
-	int		tmpnom;
-	t_liste	*tmp;
+	int				i;
+	int				j;
+	int				maxnom;
+	int				tmpnom;
+	t_liste			*tmp;
 	struct winsize	w;
 
 	tmp = lst_f;
@@ -96,7 +97,7 @@ void	ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 		lst_f = lst_f->next;
 	while (lst_f)
 	{
-		if(lst_f->type == 99)
+		if (lst_f->type == 99)
 		{
 			ft_putstr(lst_f->nom);
 			ft_putchar(':');

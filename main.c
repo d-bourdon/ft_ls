@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:45:27 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/19 17:51:48 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/20 12:55:44 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ int		main(int argc, char **argv)
 {
 	int		*option;
 	int		i;
-	t_liste	*lst_f = NULL;
+	t_liste	*lst_f;
 	char	**liste_arg;
 
 	argv++;
 	i = 0;
+	lst_f = NULL;
 	option = ft_lecture_option(&(argv), &(argc));
 	liste_arg = ft_trie_tabtab(argv, argc);
 	if (argc == 1)
