@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/17 16:45:44 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/20 10:54:29 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 	j = 0;
 	if (argc < 3)
 		lst_f = lst_f->next;
-	while (lst_f && lst_f->next != NULL)
+	while (lst_f)
 	{
 		if (lst_f->type == 99)
 		{

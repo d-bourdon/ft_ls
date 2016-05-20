@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trie_liste.c                                       :+:      :+:    :+:   */
+/*   ft_trie_liste.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/19 15:21:51 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/20 10:28:09 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,22 @@
 
 t_liste	*ft_ajout_debut_lst(t_liste *lst)
 {
-	printf("On entre dans ajout debut\n");fflush(stdout);
 	t_liste	*tmp;
 	t_liste *tmp2;
 
 	tmp = lst;
 	while (tmp && tmp->next && tmp->next->type != 99)
-	{
 		tmp = tmp->next;
-	}
-	printf("On a trouve notre 99\n"); fflush(stdout);
-	if (tmp && tmp->next && tmp->next->type == 99)
+	while (tmp && tmp->next && tmp->next->type == 99)
 	{
-		printf("ici ?"); fflush(stdout);
 		tmp2 = tmp->next;
-		printf("aie\n");fflush(stdout);
 		if (tmp->next->next && tmp->next->next->next)
 			tmp->next = tmp->next->next->next;
 		else
 			tmp->next = NULL;
-		printf("a nop"); fflush(stdout);
 		tmp2->next = lst;
 		lst = tmp2;
 	}
-	printf("fini"); fflush(stdout);
 	return (lst);
 }
 

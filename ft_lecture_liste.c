@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/19 17:50:42 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/20 12:37:30 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,11 @@ void	ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 		tmplst = ft_trie_liste(tmplst, option[3]);
 	if(option[2] == 1)
 	{
-		while(tmplst && nb > 0)
+		while(tmplst && nb >= 0)
 		{
 			nb--;
 			if (tmplst->type == 'd' && !(ft_strcmp(tmplst->nom, ".") == 0 || ft_strcmp(tmplst->nom, "..") == 0))
 			{
-
 				ft_lecture_liste(lst_f, ft_path(argument, tmplst->nom), option);
 			}
 			tmplst = tmplst->next;

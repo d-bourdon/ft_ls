@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:01:22 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/12 12:53:54 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/20 10:24:17 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
  	t_liste	*tmp;
  
  	tmp = *liste;
-	printf("ajout -> %s\n", ajout->nom);fflush(stdout);
  	if (*liste == NULL)
 	{
  		*liste = ajout;
@@ -25,12 +24,10 @@
 	}
  	else
  	{
-		printf("On cherche la fin origine ->%s\n", (*liste)->nom);fflush(stdout);
  		while (tmp && tmp->next)
 		{
  			tmp = tmp->next;
 		}
-		printf("we find end\n");fflush(stdout);
 		if (ajout != NULL)
  			tmp->next = ajout;
 	}
