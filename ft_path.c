@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/02 14:43:30 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/02 16:02:21 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/21 16:24:32 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_path(char *src, char *fichier)
 {
 	char	*tmp;
 	int		taille;
-	
+
 	tmp = src;
 	taille = ft_strlen(src) - 1;
 	if (!(src[taille] == '/'))

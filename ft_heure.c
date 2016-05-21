@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 16:33:16 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/11 17:03:45 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/21 16:43:59 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_heure(time_t heure)
 	sortie = ft_strjoin(sortie, tmp[2]);
 	sortie = ft_strjoin(sortie, " ");
 	sortie = ft_strjoin(sortie, tmp[3]);
-	while(i < 5)
+	while (i < 5)
 		free(tmp[i++]);
 	free(tmp);
 	return (sortie);

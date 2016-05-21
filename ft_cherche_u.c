@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 14:57:01 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/16 16:28:53 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/21 16:46:12 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_cherche_u(uid_t uid)
 {
 	struct passwd *info;
 
-	if((info = getpwuid(uid)) != NULL)
+	if ((info = getpwuid(uid)) != NULL)
 		return (info->pw_name);
-	return(NULL);
+	return (NULL);
 }

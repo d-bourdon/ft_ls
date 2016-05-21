@@ -6,25 +6,11 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/19 17:49:55 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/21 16:18:03 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-char	ft_dossier_fichier(char *path)
-{
-	DIR		*fd;
-
-	fd = opendir(path);
-	if (fd != NULL)
-	{
-		closedir(fd);
-		return ('d');
-	}
-	else
-		return ('-');
-}
 
 char	ft_type(mode_t mode)
 {
@@ -35,7 +21,6 @@ char	ft_type(mode_t mode)
 		return ('l');
 	else
 		return ('-');
-
 }
 
 char	*ft_lien_nom(char *nom, char *dir)
@@ -48,15 +33,14 @@ char	*ft_lien_nom(char *nom, char *dir)
 	free(tmp);
 	free(dir);
 	return (nom);
-
 }
 
-void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
+void	ft_ajout_liste_dossier(t_liste **lst_f, char *arg)
 {
-	t_liste		*ajout = NULL;
+	t_liste	*ajout;
 
 	ajout = (t_liste*)malloc(sizeof(t_liste));
-	ajout->nom = (char*)malloc(sizeof(char) * ft_strlen(argument));
+	ajout->nom = (char*)malloc(sizeof(char) * ft_strlen(arg));
 	ajout->droits = NULL;
 	ajout->lien = 0;
 	ajout->groupe_u = NULL;
@@ -65,38 +49,44 @@ void	ft_ajout_liste_dossier(t_liste **lst_f, char *argument)
 	ajout->nb_bloc = 0;
 	ajout->posix = 0;
 	ajout->date_heure = NULL;
-	ft_strcpy(ajout->nom, argument);
+	ft_strcpy(ajout->nom, arg);
 	ajout->type = 99;
 	ajout->next = NULL;
 	ft_lstaddend(lst_f, ajout);
 }
 
-t_liste	*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *option, char *argument)
+char	*lecture_lien(char *arg, char *nom)
+{
+	char	*tmp;
+
+	tmp = (char*)malloc(sizeof(char) * 256);
+	if (readlink(ft_path(arg, nom), tmp, 255))
+		return (ft_lien_nom(nom, tmp));
+	else
+		return (nom);
+}
+
+t_liste	*ft_ajt_lst(struct dirent *lrd, struct stat *llst, int *opt, char *arg)
 {
 	t_liste		*ajout;
-	char		*tmp;
 
 	ajout = (t_liste*)malloc(sizeof(t_liste));
-	ajout->nom = ft_strdup(lreaddir->d_name);
-	ajout->type = ft_dossier_fichier(ft_path(argument, lreaddir->d_name));
+	ajout->nom = ft_strdup(lrd->d_name);
+	ajout->type = ft_dossier_fichier(ft_path(arg, lrd->d_name));
 	ajout->next = NULL;
-	if (option[0] == 1 || option[4] == 1)
+	if (opt[0] == 1 || opt[4] == 1)
 	{
-		ajout->type = ft_type(llstat->st_mode);
-		ajout->droits = ft_strdup(ft_chmod(llstat->st_mode));
-		ajout->lien = llstat->st_nlink;
-		ajout->groupe_u = ft_strdup(ft_cherche_g(llstat->st_gid));
-		ajout->nom_u = ft_strdup(ft_cherche_u(llstat->st_uid));
-		ajout->taille = (int)llstat->st_size;
-		ajout->nb_bloc = (int)llstat->st_blocks;
-		ajout->date_heure = ft_heure(llstat->st_mtime);
-		ajout->posix = llstat->st_mtime;
+		ajout->type = ft_type(llst->st_mode);
+		ajout->droits = ft_strdup(ft_chmod(llst->st_mode));
+		ajout->lien = llst->st_nlink;
+		ajout->groupe_u = ft_strdup(ft_cherche_g(llst->st_gid));
+		ajout->nom_u = ft_strdup(ft_cherche_u(llst->st_uid));
+		ajout->taille = (int)llst->st_size;
+		ajout->nb_bloc = (int)llst->st_blocks;
+		ajout->date_heure = ft_heure(llst->st_mtime);
+		ajout->posix = llst->st_mtime;
 		if (ajout->type == 'l')
-		{
-			tmp = (char*)malloc(sizeof(char)*256);
-			if (readlink(ft_path(argument, ajout->nom), tmp, 255))
-				ajout->nom = ft_lien_nom(ajout->nom, tmp);
-		}
+			ajout->nom = lecture_lien(arg, ajout->nom);
 	}
 	return (ajout);
 }

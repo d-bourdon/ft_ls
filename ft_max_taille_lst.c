@@ -6,7 +6,7 @@
 /*   By: dbourdon <dbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 12:22:11 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/17 16:45:41 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/21 16:22:47 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int		*max_taille_lst(t_liste *lst, int *max)
 				max[2] = tmpmax;
 			tmpmax = ft_intlen(tmp->taille);
 			max[4] = max[4] + tmp->nb_bloc;
-			if (tmpmax > max[3])
-				max[3] = tmpmax;
+			max[3] = (tmpmax > max[3]) ? tmpmax : max[3];
 		}
 		tmp = tmp->next;
 	}

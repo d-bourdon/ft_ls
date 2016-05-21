@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/19 17:50:53 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/21 16:48:56 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int					*ft_lecture_option(char ***argv, int *argc);
 char				*ft_path(char *src, char *fichier);
 void				ft_lstaddend(t_liste **liste, t_liste *ajout);
 void				ft_ajout_liste_dossier(t_liste **lst_f, char *argument);
-t_liste				*ft_ajout_liste(struct dirent *lreaddir, struct stat *llstat, int *option, char *argument);
+t_liste				*ft_ajt_lst(struct dirent *lrd, struct stat *llst, int *opt, char *arg);
 void				ft_affichage_normal(t_liste *lst_f, int *option, int argc);
 void				ft_affichage(t_liste *lst_f, int *option, int argc);
 char				*ft_cherche_g(gid_t gid);
@@ -72,5 +72,6 @@ int					ft_lstswap_bac(t_liste **a);
 int					ft_lstswap_acb(t_liste **a);
 char				ft_type(mode_t mode);
 char				*ft_lien_nom(char *nom, char *dir);
+char				*lecture_lien(char *arg, char *nom);
 
 #endif
