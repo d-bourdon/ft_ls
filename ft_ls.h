@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/21 16:48:56 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/21 16:56:40 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,15 @@ int					*ft_lecture_option(char ***argv, int *argc);
 char				*ft_path(char *src, char *fichier);
 void				ft_lstaddend(t_liste **liste, t_liste *ajout);
 void				ft_ajout_liste_dossier(t_liste **lst_f, char *argument);
-t_liste				*ft_ajt_lst(struct dirent *lrd, struct stat *llst, int *opt, char *arg);
+t_liste				*ft_ajt_lst(struct dirent *lrd, struct stat *llst,
+						int *opt, char *arg);
 void				ft_affichage_normal(t_liste *lst_f, int *option, int argc);
 void				ft_affichage(t_liste *lst_f, int *option, int argc);
 char				*ft_cherche_g(gid_t gid);
 char				*ft_cherche_u(uid_t uid);
 char				*ft_chmod(mode_t mode);
-void				ft_lecture_liste(t_liste **lst_f, char *argument, int *option);
+void				ft_lecture_liste(t_liste **lst_f, char *argument,
+						int *option);
 t_liste				*ft_pointe_fin_lst(t_liste **liste);
 t_liste				*ft_trie_liste(t_liste *lst, int option);
 t_liste				*ft_trie_liste_inv(t_liste *lst);
