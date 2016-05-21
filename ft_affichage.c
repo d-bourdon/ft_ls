@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/20 17:00:52 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/21 12:02:29 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,47 @@ int		max_nom_lst(t_liste *lst_f)
 	return (taille + 3);
 }
 
+static int	ft_affichage_dossier(char *nom)
+{
+	ft_putchar('\n');
+	ft_putstr(nom);
+	ft_putstr(":");
+	return (0);
+}
+
+static int	ft_affichage_n2(int col, int max, t_liste **lst_f, int i)
+{
+	int		tmpnom;
+	int		j;
+
+	tmpnom = 0;
+	j = 0;
+	if (i == 0 || i < (col / max))
+	{
+		ft_putstr((*lst_f)->nom);
+		tmpnom = ft_strlen((*lst_f)->nom);
+		while (j++ < (max - tmpnom))
+			ft_putchar(' ');
+		i++;
+		j = 0;
+		*lst_f = (*lst_f)->next;
+	}
+	else
+	{
+		ft_putchar('\n');
+		i = 0;
+	}
+	return (i);
+}
+
 void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 {
 	int				i;
 	int				j;
 	int				maxnom;
 	int				tmpnom;
-	t_liste			*tmp;
 	struct winsize	w;
 
-	tmp = lst_f;
 	option[1] = 1;
 	maxnom = 0;
 	tmpnom = 0;
@@ -54,34 +85,14 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 		if (lst_f->type == 99)
 		{
 			if (argc > 2 || option[2] == 1)
-			{
-				ft_putchar('\n');
-				ft_putstr(lst_f->nom);
-				ft_putstr(":");
-			}
+				i = ft_affichage_dossier(lst_f->nom);
 			lst_f = lst_f->next;
 		}
 		else
 		{
 			maxnom = max_nom_lst(lst_f);
 			while (lst_f && (lst_f->type != 99))
-			{
-				if (i == 0 || i < (w.ws_col / maxnom))
-				{
-					ft_putstr(lst_f->nom);
-					tmpnom = ft_strlen(lst_f->nom);
-					while (j++ < (maxnom - tmpnom))
-						ft_putchar(' ');
-					i++;
-					j = 0;
-					lst_f = lst_f->next;
-				}
-				else
-				{
-					ft_putchar('\n');
-					i = 0;
-				}
-			}
+				i = ft_affichage_n2(w.ws_col, maxnom, &lst_f, i);
 		}
 		ft_putchar('\n');
 	}
