@@ -6,36 +6,19 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/21 12:02:29 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/21 14:19:30 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		max_nom_lst(t_liste *lst_f)
+static int	ft_affichage_dossier(char *nom, int mode)
 {
-	t_liste	*tmp;
-	int		i;
-	int		taille;
-
-	taille = 0;
-	i = 0;
-	tmp = lst_f;
-	while (tmp && (tmp->type != 99))
-	{
-		i = ft_strlen(tmp->nom);
-		if (i > taille)
-			taille = i;
-		tmp = tmp->next;
-	}
-	return (taille + 3);
-}
-
-static int	ft_affichage_dossier(char *nom)
-{
+	if (mode == 2)
+		ft_putchar('\n');
 	ft_putchar('\n');
 	ft_putstr(nom);
-	ft_putstr(":");
+	ft_putstr(":\n");
 	return (0);
 }
 
@@ -64,20 +47,16 @@ static int	ft_affichage_n2(int col, int max, t_liste **lst_f, int i)
 	return (i);
 }
 
-void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
+void		ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 {
 	int				i;
-	int				j;
 	int				maxnom;
-	int				tmpnom;
 	struct winsize	w;
 
 	option[1] = 1;
 	maxnom = 0;
-	tmpnom = 0;
 	ioctl(0, TIOCGWINSZ, &w);
 	i = 0;
-	j = 0;
 	if (argc < 3)
 		lst_f = lst_f->next;
 	while (lst_f)
@@ -85,7 +64,7 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 		if (lst_f->type == 99)
 		{
 			if (argc > 2 || option[2] == 1)
-				i = ft_affichage_dossier(lst_f->nom);
+				i = ft_affichage_dossier(lst_f->nom, 2);
 			lst_f = lst_f->next;
 		}
 		else
@@ -94,11 +73,31 @@ void	ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 			while (lst_f && (lst_f->type != 99))
 				i = ft_affichage_n2(w.ws_col, maxnom, &lst_f, i);
 		}
-		ft_putchar('\n');
 	}
 }
 
-void	ft_affichage_liste(t_liste *lst_f, int *option, int argc)
+static void	affichage_ligne(int *max, t_liste **lst_f)
+{
+	ft_putchar((*lst_f)->type);
+	ft_putstr((*lst_f)->droits);
+	ft_putstr(" ");
+	ft_putnbr_tab((*lst_f)->lien, max[0]);
+	ft_putchar(' ');
+	ft_putstr_tab((*lst_f)->nom_u, max[1]);
+	ft_putchar(' ');
+	ft_putchar(' ');
+	ft_putstr_tab((*lst_f)->groupe_u, max[2]);
+	ft_putchar(' ');
+	ft_putnbr_tab((*lst_f)->taille, max[3]);
+	ft_putchar(' ');
+	ft_putstr((*lst_f)->date_heure);
+	ft_putchar(' ');
+	ft_putstr((*lst_f)->nom);
+	ft_putchar('\n');
+	*lst_f = (*lst_f)->next;
+}
+
+void		ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 {
 	int		*max;
 
@@ -110,8 +109,7 @@ void	ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 	{
 		if (lst_f->type == 99)
 		{
-			ft_putstr(lst_f->nom);
-			ft_putchar(':');
+			lst_f->type = ft_affichage_dossier(lst_f->nom, 1);
 			lst_f = lst_f->next;
 		}
 		else
@@ -122,36 +120,7 @@ void	ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 			ft_putnbr(max[4]);
 			ft_putchar('\n');
 			while (lst_f && lst_f->type != 99)
-			{
-				ft_putchar(lst_f->type);
-				ft_putstr(lst_f->droits);
-				ft_putstr(" ");
-				ft_putnbr_tab(lst_f->lien, max[0]);
-				ft_putchar(' ');
-				ft_putstr_tab(lst_f->nom_u, max[1]);
-				ft_putchar(' ');
-				ft_putchar(' ');
-				ft_putstr_tab(lst_f->groupe_u, max[2]);
-				ft_putchar(' ');
-				ft_putnbr_tab(lst_f->taille, max[3]);
-				ft_putchar(' ');
-				ft_putstr(lst_f->date_heure);
-				ft_putchar(' ');
-				ft_putstr(lst_f->nom);
-				ft_putchar('\n');
-				lst_f = lst_f->next;
-			}
+				affichage_ligne(max, &lst_f);
 		}
-		ft_putchar('\n');
 	}
-}
-
-void	ft_affichage(t_liste *lst_f, int *option, int argc)
-{
-	if (lst_f == NULL)
-		ft_erreur("", 3);
-	if (option[0] != 1)
-		ft_affichage_normal(lst_f, option, argc);
-	else
-		ft_affichage_liste(lst_f, option, argc);
 }
