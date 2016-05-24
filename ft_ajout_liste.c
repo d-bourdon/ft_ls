@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/21 16:18:03 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/24 15:04:36 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_lien_nom(char *nom, char *dir)
 	return (nom);
 }
 
-void	ft_ajout_liste_dossier(t_liste **lst_f, char *arg)
+int		ft_ajout_liste_dossier(t_liste **lst_f, char *arg)
 {
 	t_liste	*ajout;
 
@@ -53,6 +53,7 @@ void	ft_ajout_liste_dossier(t_liste **lst_f, char *arg)
 	ajout->type = 99;
 	ajout->next = NULL;
 	ft_lstaddend(lst_f, ajout);
+	return (0);
 }
 
 char	*lecture_lien(char *arg, char *nom)

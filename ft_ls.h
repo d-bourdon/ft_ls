@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/21 16:56:40 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/24 15:02:39 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int					*ft_detection_option(char *str, int *option);
 int					*ft_lecture_option(char ***argv, int *argc);
 char				*ft_path(char *src, char *fichier);
 void				ft_lstaddend(t_liste **liste, t_liste *ajout);
-void				ft_ajout_liste_dossier(t_liste **lst_f, char *argument);
+int					ft_ajout_liste_dossier(t_liste **lst_f, char *argument);
 t_liste				*ft_ajt_lst(struct dirent *lrd, struct stat *llst,
 						int *opt, char *arg);
 void				ft_affichage_normal(t_liste *lst_f, int *option, int argc);

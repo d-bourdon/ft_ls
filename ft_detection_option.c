@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 17:30:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/19 15:00:46 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/24 15:33:55 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		*ft_detection_option(char *str, int *option)
 			option[3] = 1;
 		else if (str[i] == 't')
 			option[4] = 1;
+		else if (str[i] == 'c')
+			option[5] = 1;
 		else
 			ft_erreur(&(str[i]), 1);
 		i++;
