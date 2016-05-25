@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/24 15:04:36 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 11:46:15 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,18 @@
 char	ft_type(mode_t mode)
 {
 	mode = (mode & S_IFMT);
-	if (mode & S_IFDIR)
+	if (S_ISDIR(mode))
 		return ('d');
-	else if (mode == 40960)
+	else if (S_ISLNK(mode))
 		return ('l');
+	else if (S_ISBLK(mode))
+		return ('b');
+	else if (S_ISCHR(mode))
+		return ('C');
+	else if (S_ISFIFO(mode))
+		return ('p');
+	else if (S_ISSOCK(mode))
+		return ('s');
 	else
 		return ('-');
 }
@@ -50,7 +58,7 @@ int		ft_ajout_liste_dossier(t_liste **lst_f, char *arg)
 	ajout->posix = 0;
 	ajout->date_heure = NULL;
 	ft_strcpy(ajout->nom, arg);
-	ajout->type = 99;
+	ajout->type = 9;
 	ajout->next = NULL;
 	ft_lstaddend(lst_f, ajout);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/05/20 14:21:59 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 11:44:30 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_liste	*ft_ajout_debut_lst(t_liste *lst)
 	t_liste *tmp2;
 
 	tmp = lst;
-	while (tmp && tmp->next && tmp->next->type != 99)
+	while (tmp && tmp->next && tmp->next->type != 9)
 		tmp = tmp->next;
-	while (tmp && tmp->next && tmp->next->type == 99)
+	while (tmp && tmp->next && tmp->next->type == 9)
 	{
 		tmp2 = tmp->next;
 		if (tmp->next->next && tmp->next->next->next)

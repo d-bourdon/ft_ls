@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/21 14:19:30 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 11:43:19 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 		lst_f = lst_f->next;
 	while (lst_f)
 	{
-		if (lst_f->type == 99)
+		if (lst_f->type == 9)
 		{
 			if (argc > 2 || option[2] == 1)
 				i = ft_affichage_dossier(lst_f->nom, 2);
@@ -70,7 +70,7 @@ void		ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 		else
 		{
 			maxnom = max_nom_lst(lst_f);
-			while (lst_f && (lst_f->type != 99))
+			while (lst_f && (lst_f->type != 9))
 				i = ft_affichage_n2(w.ws_col, maxnom, &lst_f, i);
 		}
 	}
@@ -119,7 +119,7 @@ void		ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 			ft_putstr("total ");
 			ft_putnbr(max[4]);
 			ft_putchar('\n');
-			while (lst_f && lst_f->type != 99)
+			while (lst_f && lst_f->type != 9)
 				affichage_ligne(max, &lst_f);
 		}
 	}

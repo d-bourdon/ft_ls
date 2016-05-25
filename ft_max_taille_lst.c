@@ -6,7 +6,7 @@
 /*   By: dbourdon <dbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 12:22:11 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/21 16:22:47 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 11:47:42 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int		*max_taille_lst(t_liste *lst, int *max)
 
 	tmpmax = 0;
 	tmp = lst;
-	while (tmp && tmp->type != 99)
+	while (tmp && tmp->type != 9)
 	{
-		if (tmp->type != 99)
+		if (tmp->type != 9)
 		{
 			tmpmax = ft_intlen(tmp->lien);
 			if (tmpmax > max[0])

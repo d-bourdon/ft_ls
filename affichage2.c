@@ -6,7 +6,7 @@
 /*   By: dbourdon <dbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 14:16:37 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/21 14:19:41 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 11:45:23 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			max_nom_lst(t_liste *lst_f)
 	taille = 0;
 	i = 0;
 	tmp = lst_f;
-	while (tmp && (tmp->type != 99))
+	while (tmp && (tmp->type != 9))
 	{
 		i = ft_strlen(tmp->nom);
 		if (i > taille)
