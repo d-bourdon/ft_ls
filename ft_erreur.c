@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/30 13:45:15 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/20 11:00:11 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 14:21:59 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,16 @@ void	ft_erreur(char *str, int mode)
 	{
 		ft_putstr("ls: ");
 		ft_putstr(str);
-		ft_putstr(": Aucun fichier ou dossier porte ce nom\n");
+		if (errno == EACCES)
+			ft_putstr(": Acces interdit\n");
+		if (errno == ENOTDIR)
+			ft_putstr(": n'est pas un dossier\n");
+		if (errno == ENOENT)
+			ft_putstr(": Aucun fichier ou dossier porte ce nom\n");
 	}
 	else if (mode == 3)
 	{
-		ft_putstr("ls: Probleme de lecture de dossier dans affichage\n");
+		//ft_putstr("ls: Probleme de lecture de dossier dans affichage\n");
 		exit(0);
 	}
 }

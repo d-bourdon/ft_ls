@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/24 15:02:39 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 16:39:31 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <time.h>
 # include <sys/ioctl.h>
 # include <stdint.h>
+# include <errno.h>
 
 typedef struct		s_liste
 {
@@ -38,6 +39,8 @@ typedef struct		s_liste
 	int				nb_bloc;
 	char			*date_heure;
 	int				posix;
+	int				major;
+	int				minor;
 	struct s_liste	*next;
 }					t_liste;
 
@@ -67,7 +70,7 @@ char				ft_dossier_fichier(char *path);
 char				*ft_heure(time_t heure);
 int					max_nom_lst(t_liste *lst_f);
 void				ft_affichage_liste(t_liste *lst_f, int *option, int argc);
-int					*max_taille_lst(t_liste *lst, int *max);
+int					*max_taille_lst(t_liste *lst, int *max, int tmpmax);
 void				ft_putnbr_tab(int nb, int max);
 void				ft_putstr_tab(char *str, int max);
 int					ft_lstswap_bac(t_liste **a);

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/25 11:46:15 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 16:06:48 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	ft_type(mode_t mode)
 	else if (S_ISBLK(mode))
 		return ('b');
 	else if (S_ISCHR(mode))
-		return ('C');
+		return ('c');
 	else if (S_ISFIFO(mode))
 		return ('p');
 	else if (S_ISSOCK(mode))
@@ -60,6 +60,8 @@ int		ft_ajout_liste_dossier(t_liste **lst_f, char *arg)
 	ft_strcpy(ajout->nom, arg);
 	ajout->type = 9;
 	ajout->next = NULL;
+	ajout->major = 0;
+	ajout->minor = 0;
 	ft_lstaddend(lst_f, ajout);
 	return (0);
 }
@@ -85,6 +87,8 @@ t_liste	*ft_ajt_lst(struct dirent *lrd, struct stat *llst, int *opt, char *arg)
 	ajout->next = NULL;
 	if (opt[0] == 1 || opt[4] == 1)
 	{
+		ajout->major = major(llst->st_rdev);
+		ajout->minor = minor(llst->st_rdev);
 		ajout->type = ft_type(llst->st_mode);
 		ajout->droits = ft_strdup(ft_chmod(llst->st_mode));
 		ajout->lien = llst->st_nlink;

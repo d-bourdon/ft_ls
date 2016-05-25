@@ -6,35 +6,35 @@
 /*   By: dbourdon <dbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 12:22:11 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/25 11:47:42 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 16:38:12 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		*max_taille_lst(t_liste *lst, int *max)
+int		*max_taille_lst(t_liste *lst, int *max, int tmpmax)
 {
 	t_liste	*tmp;
-	int		tmpmax;
 
-	tmpmax = 0;
 	tmp = lst;
 	while (tmp && tmp->type != 9)
 	{
 		if (tmp->type != 9)
 		{
 			tmpmax = ft_intlen(tmp->lien);
-			if (tmpmax > max[0])
-				max[0] = tmpmax;
+			max[0] = (tmpmax > max[0]) ? tmpmax : max[0];
 			tmpmax = ft_strlen(tmp->nom_u);
-			if (tmpmax > max[1])
-				max[1] = tmpmax;
+			max[1] = (tmpmax > max[1]) ? tmpmax : max[1];
 			tmpmax = ft_strlen(tmp->groupe_u);
-			if (tmpmax > max[2])
-				max[2] = tmpmax;
+			max[2] = (tmpmax > max[2]) ? tmpmax : max[2];
 			tmpmax = ft_intlen(tmp->taille);
-			max[4] = max[4] + tmp->nb_bloc;
 			max[3] = (tmpmax > max[3]) ? tmpmax : max[3];
+			max[4] = max[4] + tmp->nb_bloc;
+			tmpmax = ft_intlen(tmp->minor);
+			max[5] = (tmpmax > max[5]) ? tmpmax : max[5];
+			tmpmax = ft_intlen(tmp->major);
+			max[6] = (tmpmax > max[6]) ? tmpmax : max[6];
+			max[3] = ((max[5] + max[6]) != 0) ? (max[5] + max[6]) + 2 : max[3];
 		}
 		tmp = tmp->next;
 	}
@@ -62,7 +62,7 @@ void	ft_putstr_tab(char *str, int max)
 	tmp = 0;
 	i = 0;
 	tmp = ft_strlen(str);
+	ft_putstr(str);
 	while (i++ < (max - tmp))
 		write(1, " ", 1);
-	ft_putstr(str);
 }

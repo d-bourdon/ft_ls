@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/25 11:43:19 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/25 17:09:44 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,14 @@ static void	affichage_ligne(int *max, t_liste **lst_f)
 	ft_putchar(' ');
 	ft_putstr_tab((*lst_f)->groupe_u, max[2]);
 	ft_putchar(' ');
-	ft_putnbr_tab((*lst_f)->taille, max[3]);
+	if ((*lst_f)->type == 'c' || (*lst_f)->type == 'b')
+	{
+		ft_putnbr_tab((*lst_f)->major, max[6]);
+		ft_putchar(',');
+		ft_putnbr_tab((*lst_f)->minor, max[5]);
+	}
+	else
+		ft_putnbr_tab((*lst_f)->taille, max[3]);
 	ft_putchar(' ');
 	ft_putstr((*lst_f)->date_heure);
 	ft_putchar(' ');
@@ -102,12 +109,12 @@ void		ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 	int		*max;
 
 	option[2] = 1;
-	max = (int*)malloc(sizeof(int) * 5);
+	max = (int*)malloc(sizeof(int) * 7);
 	if (argc < 3)
 		lst_f = lst_f->next;
 	while (lst_f)
 	{
-		if (lst_f->type == 99)
+		if (lst_f->type == 9)
 		{
 			lst_f->type = ft_affichage_dossier(lst_f->nom, 1);
 			lst_f = lst_f->next;
@@ -115,7 +122,7 @@ void		ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 		else
 		{
 			ft_bzero(max, 20);
-			max = max_taille_lst(lst_f, max);
+			max = max_taille_lst(lst_f, max, 0);
 			ft_putstr("total ");
 			ft_putnbr(max[4]);
 			ft_putchar('\n');
