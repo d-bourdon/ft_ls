@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/25 14:00:02 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/26 15:11:32 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 char		ft_dossier_fichier(char *path)
 {
 	DIR		*fd;
-
+	
+	if (readlink(path, "", 15))
+		if (errno != EINVAL)
+			return ('-');
 	fd = opendir(path);
 	if (fd != NULL)
 	{
