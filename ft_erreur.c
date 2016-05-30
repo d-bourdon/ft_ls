@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/30 13:45:15 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/25 14:21:59 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/30 14:44:17 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_erreur(char *str, int mode)
 	}
 	else if (mode == 3)
 	{
-		//ft_putstr("ls: Probleme de lecture de dossier dans affichage\n");
 		exit(0);
 	}
 }

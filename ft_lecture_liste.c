@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/26 15:11:32 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/30 17:15:41 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char		ft_dossier_fichier(char *path)
 {
 	DIR		*fd;
-	
+
 	if (readlink(path, "", 15))
 		if (errno != EINVAL)
 			return ('-');
@@ -29,7 +29,7 @@ char		ft_dossier_fichier(char *path)
 		return ('-');
 }
 
-static int	renvoie(t_liste **lst_f, int *opt, struct dirent *lrd, char *arg)
+static void	renvoie(t_liste **lst_f, int *opt, struct dirent *lrd, char *arg)
 {
 	struct stat	*llstat;
 
@@ -38,12 +38,10 @@ static int	renvoie(t_liste **lst_f, int *opt, struct dirent *lrd, char *arg)
 		lstat(ft_path(arg, lrd->d_name), llstat);
 	if (opt[1] == 1 || lrd->d_name[0] != '.')
 		ft_lstaddend(lst_f, ft_ajt_lst(lrd, llstat, opt, arg));
-	return (1);
 }
 
 void		ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 {
-	int				nb;
 	DIR				*fd;
 	struct dirent	*lreaddir;
 	t_liste			*tmplst;
@@ -51,21 +49,22 @@ void		ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 	fd = opendir(argument);
 	if (fd == NULL)
 		return (ft_erreur(argument, 2));
-	nb = ft_ajout_liste_dossier(lst_f, argument);
+	ft_ajout_liste_dossier(lst_f, argument);
 	tmplst = ft_pointe_fin_lst(lst_f);
 	while ((lreaddir = readdir(fd)) != NULL)
-		nb = nb + renvoie(lst_f, option, lreaddir, argument);
+		renvoie(lst_f, option, lreaddir, argument);
 	closedir(fd);
 	if (option[4] == 1)
 		ft_trie_liste_temp(tmplst, option[3]);
 	else
 		tmplst = ft_trie_liste(tmplst, option[3]);
 	if (option[2] == 1)
-		while (tmplst && nb-- >= 0)
-		{
-			if (tmplst->type == 'd' && !(ft_strcmp(tmplst->nom, ".") == 0
-						|| ft_strcmp(tmplst->nom, "..") == 0))
-				ft_lecture_liste(lst_f, ft_path(argument, tmplst->nom), option);
-			tmplst = tmplst->next;
-		}
+		tmplst = tmplst->next;
+	while (tmplst && tmplst->type != 9)
+	{
+		if (tmplst->type == 'd' && !(ft_strcmp(tmplst->nom, ".") == 0
+				|| ft_strcmp(tmplst->nom, "..") == 0))
+			ft_lecture_liste(lst_f, ft_path(argument, tmplst->nom), option);
+		tmplst = tmplst->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/25 16:39:31 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/30 17:22:25 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,13 @@ typedef struct		s_liste
 	struct s_liste	*next;
 }					t_liste;
 
+void				ft_free_liste(t_liste **lst, int *opt);
 void				ft_erreur(char *str, int mode);
 int					*ft_detection_option(char *str, int *option);
 int					*ft_lecture_option(char ***argv, int *argc);
 char				*ft_path(char *src, char *fichier);
 void				ft_lstaddend(t_liste **liste, t_liste *ajout);
-int					ft_ajout_liste_dossier(t_liste **lst_f, char *argument);
+void				ft_ajout_liste_dossier(t_liste **lst_f, char *argument);
 t_liste				*ft_ajt_lst(struct dirent *lrd, struct stat *llst,
 						int *opt, char *arg);
 void				ft_affichage_normal(t_liste *lst_f, int *option, int argc);

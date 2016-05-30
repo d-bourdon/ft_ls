@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/25 16:06:48 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:23:25 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ char	*ft_lien_nom(char *nom, char *dir)
 
 	tmp = ft_strjoin(nom, " -> ");
 	free(nom);
-	nom = ft_strdup(ft_strjoin(tmp, dir));
+	nom = ft_strdup(ft_strjoin(tmp, ft_strjoin(dir, "\0")));
 	free(tmp);
 	free(dir);
 	return (nom);
 }
 
-int		ft_ajout_liste_dossier(t_liste **lst_f, char *arg)
+void	ft_ajout_liste_dossier(t_liste **lst_f, char *arg)
 {
 	t_liste	*ajout;
 
@@ -57,13 +57,12 @@ int		ft_ajout_liste_dossier(t_liste **lst_f, char *arg)
 	ajout->nb_bloc = 0;
 	ajout->posix = 0;
 	ajout->date_heure = NULL;
-	ft_strcpy(ajout->nom, arg);
+	ft_strcpy(ajout->nom, ft_strjoin(arg, "\0"));
 	ajout->type = 9;
 	ajout->next = NULL;
 	ajout->major = 0;
 	ajout->minor = 0;
 	ft_lstaddend(lst_f, ajout);
-	return (0);
 }
 
 char	*lecture_lien(char *arg, char *nom)
@@ -82,10 +81,10 @@ t_liste	*ft_ajt_lst(struct dirent *lrd, struct stat *llst, int *opt, char *arg)
 	t_liste		*ajout;
 
 	ajout = (t_liste*)malloc(sizeof(t_liste));
-	ajout->nom = ft_strdup(lrd->d_name);
+	ajout->nom = ft_strdup(ft_strjoin(lrd->d_name, "\0"));
 	ajout->type = ft_dossier_fichier(ft_path(arg, lrd->d_name));
 	ajout->next = NULL;
-	if (opt[0] == 1 || opt[4] == 1)
+	if (opt[0] == 1 || opt[4] == 1 || opt[5] == 1)
 	{
 		ajout->major = major(llst->st_rdev);
 		ajout->minor = minor(llst->st_rdev);
