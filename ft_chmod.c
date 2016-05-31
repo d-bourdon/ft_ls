@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 16:34:03 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/21 16:45:48 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/31 13:45:30 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_chmod(mode_t mode)
 {
 	char	*tmp;
 
-	tmp = strdup("---------");
+	tmp = ft_strdup("---------");
 	if (mode & S_IRUSR)
 		tmp[0] = 'r';
 	if (mode & S_IWUSR)

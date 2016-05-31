@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 16:33:16 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/21 16:43:59 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/31 14:21:30 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ char	*ft_heure(time_t heure)
 	tmp = ft_strsplit(ctime(&heure), ' ');
 	tmp[3][5] = '\0';
 	sortie = ft_strdup(tmp[1]);
-	sortie = ft_strjoin(sortie, " ");
+	sortie = ft_strjoinfree(sortie, " ", 1);
 	if (ft_strlen(tmp[2]) == 1)
-		sortie = ft_strjoin(sortie, " ");
-	sortie = ft_strjoin(sortie, tmp[2]);
-	sortie = ft_strjoin(sortie, " ");
-	sortie = ft_strjoin(sortie, tmp[3]);
+		sortie = ft_strjoinfree(sortie, " ", 1);
+	sortie = ft_strjoinfree(sortie, tmp[2], 1);
+	sortie = ft_strjoinfree(sortie, " ", 1);
+	sortie = ft_strjoinfree(sortie, tmp[3], 1);
 	while (i < 5)
 		free(tmp[i++]);
 	free(tmp);

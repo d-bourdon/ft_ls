@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/30 16:23:25 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/31 14:36:28 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,8 @@ char	*ft_lien_nom(char *nom, char *dir)
 {
 	char	*tmp;
 
-	tmp = ft_strjoin(nom, " -> ");
-	free(nom);
-	nom = ft_strdup(ft_strjoin(tmp, ft_strjoin(dir, "\0")));
-	free(tmp);
-	free(dir);
+	tmp = ft_strjoinfree(nom, " -> ", 1);
+	nom = ft_strdup(ft_strjoinfree(tmp, ft_strjoinfree(dir, "\0", 1), 0));
 	return (nom);
 }
 
@@ -73,6 +70,7 @@ char	*lecture_lien(char *arg, char *nom)
 	if (readlink(ft_path(arg, nom), tmp, 255))
 		return (ft_lien_nom(nom, tmp));
 	else
+		free(tmp);
 		return (nom);
 }
 
