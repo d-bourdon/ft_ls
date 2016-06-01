@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:57:46 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/31 14:36:28 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/01 14:20:00 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	*lecture_lien(char *arg, char *nom)
 		return (ft_lien_nom(nom, tmp));
 	else
 		free(tmp);
-		return (nom);
+	return (nom);
 }
 
 t_liste	*ft_ajt_lst(struct dirent *lrd, struct stat *llst, int *opt, char *arg)
