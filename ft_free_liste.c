@@ -6,7 +6,7 @@
 /*   By: dbourdon <dbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/30 14:51:16 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/01 14:19:29 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/04 11:10:20 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free_liste(t_liste **lst, int *opt)
 {
-	if ((*lst)->next)
+	if (lst && (*lst)->next)
 		ft_free_liste((&(*lst)->next), opt);
 	if (lst)
 	{
