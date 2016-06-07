@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/05/30 17:15:41 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/07 15:53:03 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,24 @@ static void	renvoie(t_liste **lst_f, int *opt, struct dirent *lrd, char *arg)
 		ft_lstaddend(lst_f, ft_ajt_lst(lrd, llstat, opt, arg));
 }
 
+static DIR *opendirornot(char *path)
+{
+	DIR		*fd;
+
+	if (readlink(path, "", 15))
+		if (errno != EINVAL)
+			return ();
+	fd = opendir(path);
+	return (fd);
+}
+
 void		ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 {
 	DIR				*fd;
 	struct dirent	*lreaddir;
 	t_liste			*tmplst;
 
-	fd = opendir(argument);
+	fd = opendirornot(argument);
 	if (fd == NULL)
 		return (ft_erreur(argument, 2));
 	ft_ajout_liste_dossier(lst_f, argument);
