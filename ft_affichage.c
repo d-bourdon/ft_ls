@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 15:40:32 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/04 11:24:26 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/06 17:58:37 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	affichage_ligne(int *max, t_liste **lst_f)
 	ft_putchar(' ');
 	if ((*lst_f)->type == 'c' || (*lst_f)->type == 'b')
 	{
-		ft_putnbr_tab((*lst_f)->major, max[6]);
+		ft_putnbr_tab((*lst_f)->major, max[6] + 1);
 		ft_putchar(',');
 		ft_putnbr_tab((*lst_f)->minor, max[5]);
 	}
@@ -121,7 +121,7 @@ void		ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 		}
 		else
 		{
-			ft_bzero(max, 20);
+			ft_bzero(max, 28);
 			max = max_taille_lst(lst_f, max, 0);
 			ft_putstr("total ");
 			ft_putnbr(max[4]);

@@ -6,7 +6,7 @@
 /*   By: dbourdon <dbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/30 14:51:16 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/04 11:10:20 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/06 17:59:53 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	ft_free_liste(t_liste **lst, int *opt)
 {
-	if (lst && (*lst)->next)
-		ft_free_liste((&(*lst)->next), opt);
-	if (lst)
+	if (*lst)
 	{
 		free((*lst)->nom);
 		if ((*lst)->type != 9 && (opt[0] == 1 || opt[4] == 1 || opt[5] == 1))
@@ -27,5 +25,6 @@ void	ft_free_liste(t_liste **lst, int *opt)
 			free((*lst)->date_heure);
 		}
 		free(*lst);
+		*lst = (*lst)->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/01 14:18:38 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/05/30 17:15:41 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	renvoie(t_liste **lst_f, int *opt, struct dirent *lrd, char *arg)
 		lstat(ft_path(arg, lrd->d_name), llstat);
 	if (opt[1] == 1 || lrd->d_name[0] != '.')
 		ft_lstaddend(lst_f, ft_ajt_lst(lrd, llstat, opt, arg));
-	free(llstat);
 }
 
 void		ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
