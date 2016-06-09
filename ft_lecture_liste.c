@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/09 16:26:06 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/09 16:55:42 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,11 @@ static DIR	*openornot(char *path, int *opt, t_liste **lst, struct dirent *lr)
 	t_liste	*tmp;
 
 	i = 0;
-	if (readlink(path, "", 15))
-		if (errno != EINVAL)
-			i = 1;
+	opt[1] = 1;
+	if (opt[0] == 1)
+		if (readlink(path, "", 15))
+			if (errno != EINVAL)
+				i = 1;
 	fd = opendir(path);
 	if (fd != NULL && i == 0)
 		return (fd);
@@ -58,7 +60,7 @@ static DIR	*openornot(char *path, int *opt, t_liste **lst, struct dirent *lr)
 		ft_ajout_liste_dossier_d(lst, "///-///");
 	tmp = (*lst)->next;
 	lr = def_lreaddir(path);
-	renvoie_d(lst, opt, lr, "./");
+	renvoie_d(lst, opt, lr, "");
 	if (opt[4] == 1)
 		ft_trie_liste_temp(tmp, opt[3]);
 	else

@@ -20,7 +20,7 @@ void	renvoie_d(t_liste **lst_f, int *opt, struct dirent *lrd, char *arg)
 
 	llstat = (struct stat*)malloc(sizeof(struct stat));
 	if (opt[0] == 1 || opt[4] == 1 || opt[5] == 1)
-		lstat(ft_path(arg, lrd->d_name), llstat);
+		lstat(lrd->d_name, llstat);
 	if (opt[1] == 1 || lrd->d_name[0] != '.')
 	{
 		tmp2 = ft_ajt_lst(lrd, llstat, opt, arg);

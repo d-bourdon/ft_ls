@@ -16,6 +16,8 @@ void			ft_ajout_liste_dossier_d(t_liste **lst, char *arg)
 {
 	t_liste		*ajout;
 
+	if (errno != ENOTDIR && errno == EACCES && errno == ENOENT)
+		ft_erreur(arg, 2);
 	ajout = (t_liste*)malloc(sizeof(t_liste));
 	ajout->nom = (char*)malloc(sizeof(char) * ft_strlen(arg));
 	ajout->droits = NULL;
