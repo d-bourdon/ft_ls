@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/08 16:25:55 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/09 16:26:06 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	renvoie(t_liste **lst_f, int *opt, struct dirent *lrd, char *arg)
 		ft_lstaddend(lst_f, ft_ajt_lst(lrd, llstat, opt, arg));
 }
 
-static DIR *opendirornot(char *path, int *opt, t_list **lst, struct dirent *lr)
+static DIR	*openornot(char *path, int *opt, t_liste **lst, struct dirent *lr)
 {
 	DIR		*fd;
 	int		i;
@@ -54,16 +54,15 @@ static DIR *opendirornot(char *path, int *opt, t_list **lst, struct dirent *lr)
 	if (fd != NULL && i == 0)
 		return (fd);
 	fd = NULL;
-	lr = setlreaddir(path);
-	if ((*lst)->nom != "///-///")
+	if (!(*lst) || ((ft_strcmp((*lst)->nom, "///-///")) != 0))
 		ft_ajout_liste_dossier_d(lst, "///-///");
-	tmp = lst->next;
+	tmp = (*lst)->next;
 	lr = def_lreaddir(path);
 	renvoie_d(lst, opt, lr, "./");
-	if (option[4] == 1)
-		ft_trie_liste_temp(tmp, option[3]);
+	if (opt[4] == 1)
+		ft_trie_liste_temp(tmp, opt[3]);
 	else
-		tmplst = ft_trie_liste(tmp, option[3]);
+		tmp = ft_trie_liste(tmp, opt[3]);
 	return (fd);
 }
 
@@ -73,8 +72,8 @@ void		ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 	struct dirent	*lreaddir;
 	t_liste			*tmplst;
 
-	fd = opendirornot(argument, option, lst_f, lreaddir);
-	if (fd == NULL)
+	lreaddir = NULL;
+	if ((fd = openornot(argument, option, lst_f, lreaddir)) == NULL)
 		return ;
 	ft_ajout_liste_dossier(lst_f, argument);
 	tmplst = ft_pointe_fin_lst(lst_f);

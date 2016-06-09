@@ -56,7 +56,7 @@ void		ft_affichage_normal(t_liste *lst_f, int *option, int argc)
 	maxnom = 0;
 	ioctl(0, TIOCGWINSZ, &w);
 	i = 0;
-	if (argc < 3)
+	if (argc < 3 || ((ft_strcmp(lst_f->nom, "///-///")) == 0))
 		lst_f = lst_f->next;
 	while (lst_f)
 	{
@@ -109,7 +109,7 @@ void		ft_affichage_liste(t_liste *lst_f, int *option, int argc)
 
 	option[2] = 1;
 	max = (int*)malloc(sizeof(int) * 7);
-	if (argc < 3)
+	if (argc < 3 || ((ft_strcmp(lst_f->nom, "///-///")) == 0))
 		lst_f = lst_f->next;
 	while (lst_f)
 	{

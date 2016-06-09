@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:44:08 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/08 16:25:53 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/09 16:32:38 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ typedef struct		s_liste
 	struct s_liste	*next;
 }					t_liste;
 
+struct dirent		*def_lreaddir(char *arg);
+void				renvoie_d(t_liste **lst_f, int *opt, struct dirent *lrd,
+						char *arg);
+t_liste				*ft_pointe_avant_n(t_liste **lst);
+void				ft_ajout_liste_dossier_d(t_liste **lst, char *arg);
 void				ft_ajout_liste_dossier_d(t_liste **lst, char *arg);
 char				*ft_strjoinfree(char *s1, char *s2, int mode);
 void				ft_free_liste(t_liste **lst, int *opt);
