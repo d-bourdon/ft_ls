@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/07 15:53:03 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/08 16:25:55 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,30 @@ static void	renvoie(t_liste **lst_f, int *opt, struct dirent *lrd, char *arg)
 		ft_lstaddend(lst_f, ft_ajt_lst(lrd, llstat, opt, arg));
 }
 
-static DIR *opendirornot(char *path)
+static DIR *opendirornot(char *path, int *opt, t_list **lst, struct dirent *lr)
 {
 	DIR		*fd;
+	int		i;
+	t_liste	*tmp;
 
+	i = 0;
 	if (readlink(path, "", 15))
 		if (errno != EINVAL)
-			return ();
+			i = 1;
 	fd = opendir(path);
+	if (fd != NULL && i == 0)
+		return (fd);
+	fd = NULL;
+	lr = setlreaddir(path);
+	if ((*lst)->nom != "///-///")
+		ft_ajout_liste_dossier_d(lst, "///-///");
+	tmp = lst->next;
+	lr = def_lreaddir(path);
+	renvoie_d(lst, opt, lr, "./");
+	if (option[4] == 1)
+		ft_trie_liste_temp(tmp, option[3]);
+	else
+		tmplst = ft_trie_liste(tmp, option[3]);
 	return (fd);
 }
 
@@ -57,9 +73,9 @@ void		ft_lecture_liste(t_liste **lst_f, char *argument, int *option)
 	struct dirent	*lreaddir;
 	t_liste			*tmplst;
 
-	fd = opendirornot(argument);
+	fd = opendirornot(argument, option, lst_f, lreaddir);
 	if (fd == NULL)
-		return (ft_erreur(argument, 2));
+		return ;
 	ft_ajout_liste_dossier(lst_f, argument);
 	tmplst = ft_pointe_fin_lst(lst_f);
 	while ((lreaddir = readdir(fd)) != NULL)
