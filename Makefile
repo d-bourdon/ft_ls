@@ -6,7 +6,7 @@
 #    By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/30 15:44:04 by dbourdon          #+#    #+#              #
-#*   Updated: 2016/05/20 12:53:28 by dbourdon         ###   ########.fr       *#
+#*   Updated: 2016/06/13 12:38:14 by dbourdon         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME) : libft
+$(NAME) : libft $(SRC)
 	@clang $(FLAGS) $(SRC) -o $(NAME) -L./libft/ -lft
 	@echo "Compilation"
 

@@ -6,7 +6,7 @@
 /*   By: dbourdon <dbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 15:34:20 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/09 16:27:57 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/13 11:21:00 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void			ft_ajout_liste_dossier_d(t_liste **lst, char *arg)
 {
 	t_liste		*ajout;
 
-	if (errno != ENOTDIR && errno == EACCES && errno == ENOENT)
-		ft_erreur(arg, 2);
 	ajout = (t_liste*)malloc(sizeof(t_liste));
 	ajout->nom = (char*)malloc(sizeof(char) * ft_strlen(arg));
 	ajout->droits = NULL;

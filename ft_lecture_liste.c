@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 11:45:52 by dbourdon          #+#    #+#             */
-/*   Updated: 2016/06/09 16:55:42 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/13 12:12:12 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static DIR	*openornot(char *path, int *opt, t_liste **lst, struct dirent *lr)
 	t_liste	*tmp;
 
 	i = 0;
-	opt[1] = 1;
 	if (opt[0] == 1)
 		if (readlink(path, "", 15))
 			if (errno != EINVAL)
