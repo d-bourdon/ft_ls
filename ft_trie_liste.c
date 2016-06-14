@@ -6,7 +6,7 @@
 /*   By: dbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 10:41:52 by exam              #+#    #+#             */
-/*   Updated: 2016/06/07 15:21:39 by dbourdon         ###   ########.fr       */
+/*   Updated: 2016/06/14 13:18:02 by dbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ t_liste	*ft_ajout_debut_lst(t_liste *lst)
 	{
 		tmp2 = tmp->next;
 		tmp->next = tmp2->next;
+		tmp2->next = lst;
+		lst = tmp2;
+	}
+	else if (tmp->next && !tmp->next->next && tmp->next->type == 9)
+	{
+		tmp2 = tmp->next;
+		tmp->next = NULL;
 		tmp2->next = lst;
 		lst = tmp2;
 	}
